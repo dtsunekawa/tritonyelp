@@ -27,6 +27,12 @@ class Admin
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
 
+
+  field :name
+  validates_presence_of :name
+  validates_uniqueness_of :name, :email, :case_sensitive => false
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+
   ## Confirmable
   # field :confirmation_token,   :type => String
   # field :confirmed_at,         :type => Time
@@ -40,4 +46,11 @@ class Admin
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+
+  index({ email: 1 }, { unique: true, background: true })
+   field :name, :type => String
+   validates_presence_of :name
+   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at
+
+
 end
