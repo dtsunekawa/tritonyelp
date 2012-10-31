@@ -21,5 +21,6 @@ gem "devise", ">= 2.1.2"
 
 gem 'therubyracer'
 
-this should not show up here
+This is a new bad unhealthy pagan line of code
+
 
