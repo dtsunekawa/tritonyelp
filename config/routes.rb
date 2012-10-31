@@ -1,5 +1,8 @@
 Cse112::Application.routes.draw do
+
+  root :to => "home#index"
   devise_for :admins
+  resources :admins, :only => :show
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
