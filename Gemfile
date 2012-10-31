@@ -21,3 +21,8 @@ gem "devise", ">= 2.1.2"
 
 gem 'therubyracer'
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 3f15a288beae8ebf776b69a5ab3f2c3fd70a34f4
