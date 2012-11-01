@@ -1,0 +1,7 @@
+<h3>Stores</h3>
+<% @stores.each do |store| %>
+  <p>Store: <%=link_to store.name, store %></p>
+  <p>Store reviews: <%=link_to store.reviews, store %></p>
+  <p>Review : <%=link_to store.reviews.first, store %></p>
+
+<% end %>

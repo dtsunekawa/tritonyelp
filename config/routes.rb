@@ -1,6 +1,8 @@
 Cse112::Application.routes.draw do
 
-  root :to => "home#index"
+  get "store/show"
+
+  root :to => "store#show"
   devise_for :admins
   
 
