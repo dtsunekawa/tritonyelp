@@ -1,4 +1,5 @@
 <h3>Home</h3>
+<% @admins.is_admin? %>
 <% @admins.each do |admin| %>
   <p>Admin: <%=link_to admin.name, admin %></p>
 <% end %>

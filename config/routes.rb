@@ -1,9 +1,9 @@
 Cse112::Application.routes.draw do
 
-  root :to => "home#index"
-  devise_for :admins
-  
+  devise_for :users, :users
 
+  root :to => "home#index"
+  
   resources :admins, :only => :show
 
 
