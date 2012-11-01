@@ -1,17 +1,14 @@
 Cse112::Application.routes.draw do
 
-<<<<<<< HEAD
-  devise_for :users, :users
+devise_for :users
 
+  
   root :to => "home#index"
-=======
+  
   get "store/show"
 
   root :to => "store#show"
-  devise_for :admins
->>>>>>> a4c0e930d961fad30214152c0d096ad4a3ddc47d
-  
-  resources :admins, :only => :show
+
 
 
   # The priority is based upon order of creation:
