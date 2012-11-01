@@ -1,3 +1,4 @@
+
 class User
   include Mongoid::Document
   # Include default devise modules. Others available are:
@@ -29,6 +30,8 @@ class User
 
 
   field :name,      :type => String
+
+  has_many :reviews
 
   #referenced_in :review
   #Cam - The above line is currently broken

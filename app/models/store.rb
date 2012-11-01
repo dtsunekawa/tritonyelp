@@ -10,7 +10,7 @@ class Store
 	field :avg_price, 		:type => Float
 
 
-	embeds_many :reviews		
+	has_many :reviews
 
 
 

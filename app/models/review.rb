@@ -3,6 +3,9 @@ class Review
 
   field :content,		:type => String
   belongs_to :user
-  references_one :user
-  references_many :tags
+  belongs_to :store
+
+  # This throws an error when creating a Review
+  #references_many :tags
+
 end
