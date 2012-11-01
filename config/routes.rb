@@ -2,12 +2,10 @@ Cse112::Application.routes.draw do
 
 devise_for :users
 
-  
-  root :to => "home#index"
+  root :to => "users#index"
   
   get "store/show"
 
-  root :to => "store#show"
 
 
 
