@@ -29,6 +29,8 @@ class User
 
 
   field :name,      :type => String
+
+  referenced_in :review
   
   ## Confirmable
   # field :confirmation_token,   :type => String

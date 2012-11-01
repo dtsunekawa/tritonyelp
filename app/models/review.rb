@@ -2,5 +2,6 @@ class Review
   include Mongoid::Document
 
   field :content,		:type => String
-  embeds_one :user
+  references_one :user
+  references_many :tags
 end
