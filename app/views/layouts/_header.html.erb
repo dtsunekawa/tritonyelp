@@ -1,10 +1,9 @@
 <header>
-	<div id="logo">
-	</div>
+	<%= image_tag("logo.png", :alt => "I am a logo", :class => "round") %>
 	<nav class="round">
 		<ul>
-			<li><%= link_to "Home", 'root_path' %></li>
-				<li><%= link_to "Sign In", 'new_user_path' %></li>
+			<li><%= link_to "Home", root_path %></li>
+				<li><%= link_to "Sign In", '#' %></li>
 			</ul>
 	</nav>
 </header>

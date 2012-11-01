@@ -30,7 +30,8 @@ class User
 
   field :name,      :type => String
 
-  referenced_in :review
+  #referenced_in :review
+  #Cam - The above line is currently broken
   
   ## Confirmable
   # field :confirmation_token,   :type => String
