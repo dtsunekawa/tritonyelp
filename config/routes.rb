@@ -6,8 +6,12 @@ devise_for :users do
 	get '/users/sign_out' => 'devise/sessions#destroy'
 end
 
-match '/stores' => 'store#index'
-match '/stores/:id' => 'store#show'
+resources :stores
+
+#match '/stores' => 'store#index'
+#match '/stores/:id' => 'store#show'
+#match '/store/:id/' => 'store#show'
+#match '/store/new/' => 'store#new'
 
 
 

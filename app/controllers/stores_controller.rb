@@ -1,4 +1,4 @@
-class StoreController < ApplicationController
+class StoresController < ApplicationController
 
   def index
 		@stores = Store.all
@@ -45,6 +45,16 @@ class StoreController < ApplicationController
 	end
 
 	def update
+		@store = Store.find(params[:id])
+		respond_to do |format|
+			if @store.update_attributes(params[:store])
+				format.html { redirect_to @store, :notice => 'Store was successfully updated.' }
+				format.json { head :no_content }
+			else
+				format.html { render :action => 'edit' }
+				format.json { render :json => @store.errors, :status => :unprocessable_entity }
+			end
+		end
 		
 	end
 

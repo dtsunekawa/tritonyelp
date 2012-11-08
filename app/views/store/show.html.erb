@@ -1,7 +1,0 @@
-<h3>Stores</h3>
-<% @stores.each do |store| %>
-  <b><%=store.name%></b>
-  <% store.reviews.each do |review| %>
-  	<p> <%= review.content %> <p>
-  <% end %>
-<% end %>
