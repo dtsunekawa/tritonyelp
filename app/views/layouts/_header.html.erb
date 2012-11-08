@@ -3,7 +3,12 @@
 	<nav class="round">
 		<ul>
 			<li><%= link_to "Home", root_path %></li>
-				<li><%= link_to "Sign In", '/users/sign_in' %></li>
-			</ul>
+			<% if !user_signed_in? %>
+			<li><%= link_to "Sign In", '/users/sign_in' %></li>
+			<% else %>
+			<li><%= link_to "Sign Out", '/users/sign_out' %></li>
+			<% end %>
+			
+		</ul>
 	</nav>
 </header>
