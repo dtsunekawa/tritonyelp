@@ -1,13 +1,12 @@
 Cse112::Application.routes.draw do
 
+root :to => "home#index"
+
 devise_for :users do
-
-get '/users/sign_out' => 'devise/sessions#destroy'
-
+	get '/users/sign_out' => 'devise/sessions#destroy'
 end
 
-  root :to => "users#index"
-  match '/stores' => 'store#show'
+match '/stores' => 'store#show'
 
 
 
