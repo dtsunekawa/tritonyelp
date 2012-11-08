@@ -7,8 +7,7 @@ get '/users/sign_out' => 'devise/sessions#destroy'
 end
 
   root :to => "users#index"
-  match 'store' => 'store#show'
-  get "store/show"
+  match '/stores' => 'store#show'
 
 
 
