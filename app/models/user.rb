@@ -30,7 +30,7 @@ class User
 
 
   field :name, :type => String
-	field :role, :type => String
+	field :role, :type => String, :default => :customer
 
   has_many :reviews
 
