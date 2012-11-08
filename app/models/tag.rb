@@ -20,21 +20,24 @@ class Tag
 
 	# returns a hash of all unique tag names and their counts
 	def all_unique
-		tag_list = Hash.new {}
+		tag_list = Hash.new
 
 		all_tags = Tag.all
 
-		for all_tags do |t|
+		all_tags.each do |t|
 			if tag_list.has_key( t.name )
-				tag_list[ t.name => 1 ]
+				tag_list[t.name] = 1 
 			else
-				tag_list[t.name] += 1;
-		end unless all_tags.nil?
+				tag_list[t.name] += 1
+			end #unless all_tags.nil?
+					#??? Might wanna work on your logic here
+		end
 
 		# sort by value in descending order
-		tag_list.metrics.sort_by {|name, count| count}.reverse
+			tag_list.metrics.sort_by{|name, count| count}
+			.reverse
 
-		return tag_list
+			return tag_list
 	end
 
 end

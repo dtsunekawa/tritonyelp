@@ -29,7 +29,8 @@ class User
   field :last_sign_in_ip,    :type => String
 
 
-  field :name,      :type => String
+  field :name, :type => String
+	field :role, :type => String
 
   has_many :reviews
 
