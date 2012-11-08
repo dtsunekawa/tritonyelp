@@ -4,6 +4,7 @@
 		<ul>
 			<li><%= link_to "Home", root_path %></li>
 			<% if !user_signed_in? %>
+			<li><%= link_to "Register", '/users/sign_up' %></li>
 			<li><%= link_to "Sign In", '/users/sign_in' %></li>
 			<% else %>
 			<li><%= link_to "Sign Out", '/users/sign_out' %></li>
