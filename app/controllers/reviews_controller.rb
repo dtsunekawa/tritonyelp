@@ -3,9 +3,27 @@ class ReviewsController < ApplicationController
 		##Index shit goes here
 	end
 
-		##Create Review
+		##New
 		def new
 			@review = review.new
+			respond_to do |format|
+				format.html
+				format.json {render :json => @review}
+		end
+
+		##Create Review
+		def create
+			@review = review.new(params[:review])
+			respond_to do |format|
+				if @review.save
+					format.html {redirect_to @review :notice => "Review was successfully created"}
+					format.json {render :json => @review :status => :created}
+				else
+					format.html {render :action => "new"}
+					format.json {render :json => @review.errors, :status => :unprocessable_entity}
+				end
+			end
+
 		end
 
 		##Read Review
