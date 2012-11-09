@@ -10,15 +10,17 @@ class ReviewsController < ApplicationController
 
 		##Read Review
 		def show
+			@Review = Review.find(params[:id])
 		end
 
 		##Update Review
 		def edit
-			@review = review.find(params[:id])
+			@review = Review.find(params[:id])
 		end
 
 		##Destroy Review
 		def delete
+			Review.delete_all
 		end
 
 end
