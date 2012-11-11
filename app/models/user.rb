@@ -50,4 +50,38 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+
+  # Checks if current user role =='admin'
+  def is_admin?
+    role = self.role
+
+      if(role == 'admin')
+        return true
+      else
+        return false
+      end
+  end
+
+   # Checks if current user role =='admin'
+  def is_customer?
+    role = self.role
+
+      if(role == 'customer')
+        return true
+      else
+        return false
+      end
+  end
+
+   # Checks if current user role =='admin'
+  def is_merchant?
+    role = self.role
+
+      if(role == 'merchant')
+        return true
+      else
+        return false
+      end
+  end
+
 end
