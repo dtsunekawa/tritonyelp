@@ -1,5 +1,7 @@
 class StoresController < ApplicationController
 
+	before_filter :require_merchant, :only => [:new, :create, :edit, :update]
+
   def index
 		@stores = Store.all
 
@@ -58,8 +60,15 @@ class StoresController < ApplicationController
 		
 	end
 
-	def delete
+	def destroy
+		@store = Store.find(params[:id])
+		@store.destroy
 
+		respond_to do |format|
+			format.html { redirect_to stores_path }
+			format.json { head :no_content }
+		end
 	end
+
 
 end
