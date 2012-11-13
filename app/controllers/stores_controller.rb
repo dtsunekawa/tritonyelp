@@ -3,8 +3,11 @@ class StoresController < ApplicationController
 	before_filter :require_merchant, :only => [:new, :create, :edit, :update]
 
   def index
-		@stores = Store.all
-
+		if params[:search]
+			@stores = Store.search(params[:search])
+		else
+			@stores = Store.all
+		end
 		respond_to do |format|
 			format.html
 			format.json { render :json => @stores }
