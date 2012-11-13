@@ -1,0 +1,14 @@
+<% if @user.stores.empty? %>
+	<h3>You don't have any stores yet!</h3>
+<% end %>
+
+<% @user.stores.each do | store | %>
+<tr>
+  <b><td><%= store.name %></td></b>
+		<td><%= link_to 'Show', store_path(store) %></td>
+		<td><%= link_to 'Edit', edit_store_path(store) %></td>
+</tr>
+<br />
+<% end %>
+<br />
+<%= link_to 'New Store', new_store_path %>
