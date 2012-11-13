@@ -140,3 +140,20 @@ footer nav ul {
 }
 
 .error { color: red }
+
+
+table#stores {
+  margin: 10px;
+  border-collapse: collapse;
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+table#stores th {
+  border: 2px solid white;
+  font-weight: bold;
+  background-color: wheat;
+}
+table#stores th, table#stores td {
+  padding: 4px;
+  text-align: left;
+}

@@ -1,8 +1,51 @@
 <h3>Home</h3>
+
 <% if signed_in? %>
 	Welcome back <%= @name %>! You are a <%= @role %>. 
 <% else %>
+
 	Welcome to Triton Yelp!
+
+    Search for stores
+    <form accept-charset="UTF-8" action="" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="5yQb2TE5PxCLENXt/ys9lv6X352RQCj5r3jA7q99RF0=" /></div>
+      <input id="search_terms" name="search_terms" type="text" />
+      <input name="commit" type="submit" value="Search" />
+    </form>
+
+<div>
+
+<h4 align="center">Best of Yelp Stores </h4>
+<table id='stores'>
+	<thead>
+	  <tr>
+		<th> Store Name </th>
+		<th> Average Rating </th>
+		<th> Average Price </th>
+		<th> Location </th>		
+	  </tr>
+	</thead>
+
+	<% @stores.each do |store| %>
+	<tbody>
+		<td><%= link_to store.name, store %></td>
+		<td> <%= store.avg_rating %> </td>
+		<td> <%= store.avg_price %> </td>
+		<td> (<%= store.x_coord %>, <%= store.x_coord %>) </td>	
+	</tbody>
+<% end %>
+</table>
+
+</div>
+
+
+
+
+
+
+
+
+
+
 <% end %>
 
 

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rotten Potatoes!</title>
+    <link href="/assets/application.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/assets/jquery.js?body=1" type="text/javascript"></script>
+    <script src="/assets/jquery_ujs.js?body=1" type="text/javascript"></script>
+    <script src="/assets/application.js?body=1" type="text/javascript"></script>
+    <meta content="authenticity_token" name="csrf-param" />
+    <meta content="5yQb2TE5PxCLENXt/ys9lv6X352RQCj5r3jA7q99RF0=" name="csrf-token" />
+  </head>
+  <body>
+    <h2>All Movies</h2>
+
+
+    <table id='movies'>
+      <thead>
+        <tr>
+          <th>Movie Title</th>
+          <th>Rating</th>
+          <th>Release Date</th>
+          <th>More Info</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Aladdin</td>
+          <td>G</td>
+          <td>1992-11-25 00:00:00 UTC</td>
+          <td><a href="/movies/4">More about Aladdin</a></td>
+        </tr>
+        <tr>
+          <td>The Help</td>
+          <td>PG-13</td>
+          <td>2011-08-10 00:00:00 UTC</td>
+          <td><a href="/movies/6">More about The Help</a></td>
+        </tr>
+        <tr>
+          <td>testing</td>
+          <td>R</td>
+          <td>2008-03-08 00:00:00 UTC</td>
+          <td><a href="/movies/8">More about testing</a></td>
+        </tr>
+      </tbody>
+      
+    </table>
+
+
+
+    <a href="/movies/new">Add new movie</a>
+    <h1>Search TMDb for a movie</h1>
+    <form accept-charset="UTF-8" action="/movies/search_tmdb" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="5yQb2TE5PxCLENXt/ys9lv6X352RQCj5r3jA7q99RF0=" /></div>
+      <label for='search_terms'>Search Terms</label>
+      <input id="search_terms" name="search_terms" type="text" />
+      <input name="commit" type="submit" value="Search TMDb" />
+    </form>
+  </body>
+</html>

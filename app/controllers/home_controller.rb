@@ -5,6 +5,10 @@ class HomeController < ApplicationController
 		    @name = current_user.name
 		    @role = current_user.role
 	    end
+
+		@stores = Store.all
+
+
 	end
 	
 end
