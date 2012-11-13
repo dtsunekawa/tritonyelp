@@ -10,7 +10,13 @@
 		<div class="container">
 			<%= render 'layouts/header' %>
 			<section class ="round">
-				<p id="notice"><%= notice %></p>
+			<% if flash[:error] %>
+				<p class="error"><%= flash[:error] %></p>
+			<% end %> 
+			<% if flash[:notice] %>
+				<p class="notice"><%= flash[:notice] %></p>
+			<% end %>
+			
 				<%= yield %>
 			</section>
 			<%= render 'layouts/footer' %>

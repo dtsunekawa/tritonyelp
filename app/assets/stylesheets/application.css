@@ -132,3 +132,11 @@ footer nav ul {
   -webkit-border-radius: 10px;
   border-radius:         10px;
 }
+
+/* Errors and Notices */
+.error, .notice {
+	background: #eee;
+	padding: 10px;
+}
+
+.error { color: red }
