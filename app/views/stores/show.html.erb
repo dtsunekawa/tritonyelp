@@ -1,8 +1,9 @@
   <b><%= @store.name %></b>
+	<%= link_to 'Edit', edit_store_path(@store) %>
   <% @store.reviews.each do |review| %>
   	<p> <%= review.content %> </p>
   <% end %>
 <br />
 <br />
-<%= link_to 'Back', stores_path %>
+<%= link_to 'Back', root_path %>
 

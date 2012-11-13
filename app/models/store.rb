@@ -2,6 +2,7 @@ class Store
   include Mongoid::Document
 	
 	has_many :reviews
+	belongs_to :user
 
   field :name, :type => String
 	field :x_coord, :type => Float

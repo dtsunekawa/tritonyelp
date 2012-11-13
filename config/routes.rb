@@ -9,15 +9,7 @@ devise_for :users do
 end
 
 resources :stores
-
-#match '/stores' => 'store#index'
-#match '/stores/:id' => 'store#show'
-#match '/store/:id/' => 'store#show'
-#match '/store/new/' => 'store#new'
-
-
-
-
+match '/users/:id/stores', to: 'users#show_stores', as: :user_stores, using: :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

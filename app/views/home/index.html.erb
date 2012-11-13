@@ -1,7 +1,9 @@
 <h3>Home</h3>
-
-Welcome back <%= @role %> <%= @name %>! 
-
+<% if signed_in? %>
+	Welcome back <%= @name %>! You are a <%= @role %>. 
+<% else %>
+	Welcome to Triton Yelp!
+<% end %>
 
 
 

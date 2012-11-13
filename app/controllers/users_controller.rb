@@ -4,11 +4,14 @@ class UsersController < ApplicationController
   	@users = User.all
   end
 
-
   def show
   	@users = User.find(params[:id])
 		
   end
+
+	def show_stores
+		@user = User.find(params[:id])
+	end
 
   def create
   	@users = User.new

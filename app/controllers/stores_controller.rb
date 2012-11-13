@@ -30,6 +30,7 @@ class StoresController < ApplicationController
 	end
 	
 	def create
+		params[:store][:user_id] = current_user.id
 		@store = Store.new(params[:store])
 		respond_to do |format|
 			if @store.save

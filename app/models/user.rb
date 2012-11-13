@@ -33,6 +33,7 @@ class User
 	field :role, :type => String, :default => :customer
 
   has_many :reviews
+	has_many :stores
 
   #referenced_in :review
   #Cam - The above line is currently broken
