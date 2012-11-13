@@ -2,11 +2,13 @@
 
 <% if signed_in? %>
 	Welcome back <%= @name %>! You are <% if @role == 'admin' %>an<% else %>a<% end %> <%= @role %>. 
+	<br />
 <% else %>
-
 	Welcome to Triton Yelp!
+	<br />
+<% end %>
 
-    Search for stores
+	What are you looking for? <i>(e.g. Pizza)</i>
     <form accept-charset="UTF-8" action="" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="5yQb2TE5PxCLENXt/ys9lv6X352RQCj5r3jA7q99RF0=" /></div>
       <input id="search_terms" name="search_terms" type="text" />
       <input name="commit" type="submit" value="Search" />
@@ -46,7 +48,6 @@
 
 
 
-<% end %>
 
 
 
