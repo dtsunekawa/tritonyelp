@@ -8,8 +8,13 @@ devise_for :users do
   get '/users/show'
 end
 
-resources :stores
+resources :stores do
+  resources :reviews
+end
+
 match '/users/:id/stores', to: 'users#show_stores', as: :user_stores, using: :get
+
+resources :reviews
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

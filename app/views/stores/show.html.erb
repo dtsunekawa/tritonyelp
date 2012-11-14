@@ -1,6 +1,8 @@
   <b><%= @store.name %></b>
 	<%= link_to 'Edit', edit_store_path(@store) %>
+	<%= link_to 'Review', new_store_review_path(@store) %>
   <% @store.reviews.each do |review| %>
+  	<h5> <%= review.user.name %> </h5>
   	<p> <%= review.content %> </p>
   <% end %>
 <br />

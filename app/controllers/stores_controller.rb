@@ -2,14 +2,14 @@ class StoresController < ApplicationController
 
 	before_filter :require_merchant, :only => [:new, :create, :edit, :update]
 
-  def index
+  	def index
 		@stores = Store.all
 
 		respond_to do |format|
 			format.html
 			format.json { render :json => @stores }
 		end
-  end
+  	end
   
 	def show
 		@store = Store.find(params[:id])
@@ -17,7 +17,7 @@ class StoresController < ApplicationController
 		respond_to do |format|
 			format.html
 			format.json { render :json => @store }
-  	end
+  		end
 	end
 
 	def new
@@ -26,7 +26,7 @@ class StoresController < ApplicationController
 		respond_to do |format|
 			format.html
 			format.json { render :json => @store }
-  	end
+  		end
 	end
 	
 	def create

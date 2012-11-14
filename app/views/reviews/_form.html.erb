@@ -1,0 +1,20 @@
+<%= form_for([@store, @review]) do |f| %>
+	<% if @review.errors.any? %>
+		<div id="error_explaination">
+			<h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved: </h2>
+
+			<ul>
+				<% @review.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+<div class="field">
+	<%= f.text_area :content, :cols => '75%', :rows=> '10%' %>
+</div>
+<div class="actions">
+	<%= f.submit %>
+</div>
+<% end %>
