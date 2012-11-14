@@ -10,4 +10,11 @@ class Store
 	field :avg_rating, :type => Float
 	field :avg_price, :type => Float
 
+	def self.search(search)
+		if search
+			where(name: /(#{Regexp.quote(search)})/i)
+		else
+			all
+		end
+	end
 end
