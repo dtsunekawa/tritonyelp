@@ -1,11 +1,11 @@
 class ReviewsController < ApplicationController
+	
+	before_filter :require_customer, :only => [:new, :create, :edit, :delete]
 
 	def index
 		@reviews = Review.all
-		##Index shit goes here
 	end
 
-	##New
 	def new
 		@store = Store.find(params[:store_id])
 		@review = Review.new
@@ -15,7 +15,6 @@ class ReviewsController < ApplicationController
 		end
 	end
 
-	##Create Review
 	def create
 		@review = Review.new(params[:review])
 		@review.user = current_user
@@ -32,7 +31,7 @@ class ReviewsController < ApplicationController
 	def edit
 		@review = Review.find(params[:id])
 	end
-		##Destroy Review
+	
 	def delete
 		Review.delete_all
 	end
