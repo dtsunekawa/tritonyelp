@@ -24,7 +24,7 @@
 	  </tr>
 	</thead>
 
-	<% @stores.each do |store| %>
+	<% @stores.sort_by{ |store| store.avg_rating || 0}.reverse.each do |store| %>
 	<tbody>
 		<td><%= link_to store.name, store %></td>
 		<td> <%= store.avg_rating %> </td>
