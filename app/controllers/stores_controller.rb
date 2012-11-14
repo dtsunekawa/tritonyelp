@@ -2,7 +2,7 @@ class StoresController < ApplicationController
 
 	before_filter :require_merchant, :only => [:new, :create, :edit, :update]
 
-<<<<<<< HEAD
+# <<<<<<< HEAD
   	def index
 		@stores = Store.all
 
