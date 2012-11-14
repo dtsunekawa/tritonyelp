@@ -3,6 +3,7 @@ class Review
 
   ##Content
   field :content,		:type => String
+	field :rating, :type => Integer
  
   ##Trackable
   field :created_at, :type => Time
