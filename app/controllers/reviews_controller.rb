@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def new
+		@tags = Tag.all
 		@store = Store.find(params[:store_id])
 		@tags = Tag.all_unique
 		@review = Review.new
