@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def new
+		@tags = Tag.all
 		@store = Store.find(params[:store_id])
 		@review = Review.new
 		respond_to do |format|
