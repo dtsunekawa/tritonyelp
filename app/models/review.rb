@@ -10,8 +10,8 @@ class Review
 
   belongs_to :user
   belongs_to :store
-  has_many :tags
-
+  has_many :tags, :dependent => :destroy
+  accepts_nested_attributes_for :tags
 
 
   # This throws an error when creating a Review

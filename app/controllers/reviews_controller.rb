@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
 
 	def new
 		@store = Store.find(params[:store_id])
+		@tags = Tag.all_unique
 		@review = Review.new
 		respond_to do |format|
 			format.html
@@ -16,11 +17,21 @@ class ReviewsController < ApplicationController
 	end
 
 	def create
+		tag_list = params[:review][:tag_names] || []
 		@review = Review.new(params[:review])
 		@review.user = current_user
 		@review.store = params[:store_id] 
 		respond_to do |format|
 			if @review.save!
+
+				#create all tags
+				tag_list.each do |tag_name|
+					tag = @review.tags.new( :name => tag_name )
+					puts tag.name
+
+					tag.save
+				end
+
 				format.html {redirect_to root_path, :notice => 'Review was successfully created'}
 			else
 				format.html {render :action => "new"}
