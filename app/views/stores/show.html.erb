@@ -3,7 +3,11 @@
 	<%= link_to 'Review', new_store_review_path(@store) %>
   <% @store.reviews.each do |review| %>
   	<h5> <%= review.user.name %> </h5>
-  	<p> <%= review.content %> </p>
+  	<p> <%= review.content %><br>
+  	<% review.tags.each do |tag| %>
+  		<%= tag.name %> 
+  	<% end %>
+  	</p>
   <% end %>
 <br />
 <br />

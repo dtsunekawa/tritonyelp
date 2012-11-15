@@ -19,6 +19,14 @@
 <div class="field">
 	<%= f.text_area :content, :cols => '75%', :rows=> '10%' %>
 </div>
+
+
+<%@tags.each_key do |tag| %>
+	<%=check_box_tag "review[tag_names][]", tag, false%>
+	<%=tag%><br>
+<%end%>
+
+
 <div class="actions">
 	<%= f.submit %>
 </div>
