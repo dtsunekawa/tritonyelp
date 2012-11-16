@@ -4,11 +4,28 @@
   <% @store.reviews.each do |review| %>
   	<h5> <%= review.user.name %> </h5>
   	<p> <%= review.content %><br>
+
+      <% if user_signed_in? %>
+      <%= button_to "+",{ :controller => 'uservotes',
+                          :action => 'upvote',
+                          :pid => current_user.id,
+                          :rid => review.id,
+                          :sid => @store.id,
+                          :method => 'create' } %>
+
+       <%= review.uservotes.upcount(review.id) %>
+      <% end %>
   	<% review.tags.each do |tag| %>
   		<%= tag.name %> 
+
+
+
   	<% end %>
   	</p>
-  <% end %>
+    
+     
+
+ <%end%>
 <br />
 <br />
 <%= link_to 'Back', root_path %>

@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
 
 	def new
 		@tags = Tag.all
+		@votes = Uservote.all
 		@store = Store.find(params[:store_id])
 		@tags = Tag.all_unique
 		@review = Review.new

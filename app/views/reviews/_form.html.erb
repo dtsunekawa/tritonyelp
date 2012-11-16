@@ -12,9 +12,6 @@
 	<% end %>
 
 
-	<%  @tags.each do |tag| %>
-	  <%= f.check_box("test", tag.name) %>
-	<% end %>
 
 <div class="field">
 	<%= f.text_area :content, :cols => '75%', :rows=> '10%' %>
