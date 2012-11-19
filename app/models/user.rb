@@ -35,6 +35,9 @@ class User
   has_many :reviews
 	has_many :stores
 
+  #user has a foreign key to uservotes
+  has_many :uservotes
+
   #referenced_in :review
   #Cam - The above line is currently broken
   

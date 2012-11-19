@@ -6,6 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+puts 'PURGING DATABASE'
+Mongoid.purge!
+
+
 	admin = User.create(name: 'John', email: 'testuser@ucsd.edu', lname: 'Doe', role: 'admin', password: 'testing123')
 	store = Store.create(name: 'John\'s Pizza', user: admin)
 
@@ -102,19 +106,19 @@ puts 'New review created: ' << r_user_sunshine.content
 
 # seeding tags
 puts 'SETTING UP DEFAULT TAGS'
-tag = Tag.create! :name => 'Burrito'
+tag = Tag.create! :name => '#Burrito'
 tag.review = r_user_goodies._id
 tag.save!
 puts 'New tag created: ' << tag.name
-tag2 = Tag.create! :name => 'Fries'
+tag2 = Tag.create! :name => '#Fries'
 tag2.review = r_user_burger_king._id
 tag2.save!
 puts 'New tag created: ' << tag2.name
-tag3 = Tag.create! :name => 'Chinese Food'
+tag3 = Tag.create! :name => '#Chinese Food'
 tag3.review = r_user_panda._id
 tag3.save!
 puts 'New tag created: ' << tag3.name
-tag4 = Tag.create! :name => 'Market Place'
+tag4 = Tag.create! :name => '#Market Place'
 tag4.review = r_user_sunshine._id
 tag4.save!
 puts 'New tag created: ' << tag4.name

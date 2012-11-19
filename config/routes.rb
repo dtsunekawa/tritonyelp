@@ -6,10 +6,14 @@ devise_for :users do
 	get '/users/sign_out' => 'devise/sessions#destroy'
   get '/users/index'
   get '/users/show'
+ 
+  post 'uservotes/upvote'
+  get '/stores/show'
 end
 
 resources :stores do
   resources :reviews
+
 end
 
 match '/users/:id/stores', to: 'users#show_stores', as: :user_stores, using: :get
