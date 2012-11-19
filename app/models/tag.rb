@@ -35,11 +35,11 @@ class Tag
 		# sort by value in descending order
 		tag_list.sort_by {|k,v| v}.reverse
 
+		# print all keys and vals for debugging
 		tag_list.each_pair do |name, count|
 			puts name
 			puts count
 		end
-
 
 		return tag_list
 	end

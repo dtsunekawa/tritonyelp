@@ -27,7 +27,7 @@
     #feedback { font-size: 1.4em; }
     #selectable .ui-selecting { background: #FECA40; }
     #selectable .ui-selected { background: #F39814; color: white; }
-    #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+    #selectable { list-style-type: none; margin: 0; padding: 0; width: 35%; }
     #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
     </style>
     <script>
@@ -50,16 +50,15 @@
 </head>
 <body>
  
-<p id="feedback">
-<span>Tags:</span> <span id="select-result">none</span>.
-</p>
- 
 <ol id="selectable">
     <%@tags.each_key do |tag| %>
     	<li class="ui-widget-content"> <%=tag%> </li>
     <%end%>
 </ol>
-
+ 
+<p id="feedback">
+<span>Selected Tags:</span> <span id="select-result">none</span>
+</p>
 
 <div class="actions">
 	<%= f.submit %>
