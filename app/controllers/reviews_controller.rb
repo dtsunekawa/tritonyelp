@@ -7,10 +7,8 @@ class ReviewsController < ApplicationController
 	end
 
 	def new
-<<<<<<< HEAD
-=======
+
 		@votes = Uservote.all
->>>>>>> 213a41c61157ff681f686d5c1e1595ca955e3a21
 		@store = Store.find(params[:store_id])
 		@tags = Tag.all_unique
 		@review = Review.new
