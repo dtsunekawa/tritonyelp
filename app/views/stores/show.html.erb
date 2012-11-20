@@ -1,36 +1,47 @@
   <b><%= @store.name %></b>
 	<br />
-	<%= @store.description %>
+	<% if @store.image.exists? %>
+	<center><%= image_tag @store.image.url(:banner), :class => "banner" %></center>
 	<br />
+	<% end %>
+	<%= @store.description %>
 	<br />
 	<%= link_to 'Edit', edit_store_path(@store) %>
 	<%= link_to 'Review', new_store_review_path(@store) %>
 
 
-
-  <% @store.reviews.each do |review| %>
-  	<h5> <%= review.user.name %> </h5>
-  	<p> <%= review.content %><br>
+	<% if !@store.reviews.empty? %>
+	<br />
+	<br />
+	<b>Customer Feedback</b>
+  	<% @store.reviews.each do |review| %>
+		<br />
+		<br />
+  		<b> <%= review.user.name %> </b><br />
+  		<i><%= review.content %></i><br />
+			<br />
+			<% up_count = review.uservotes.upcount(review.id) %>
+			<% if up_count > 0 %>
+				<span style="color: green">+<%= up_count %></span>
+			<% else %>
+				+<%= up_count %>
+			<% end %>
 
       <% if user_signed_in? %>
-      <%= button_to "+",{ :controller => 'uservotes',
+      <%= button_to "This Review Was Helpful",{ :controller => 'uservotes',
                           :action => 'upvote',
                           :pid => current_user.id,
                           :rid => review.id,
                           :sid => @store.id,
                           :method => 'create' } %>
 
-       <%= review.uservotes.upcount(review.id) %>
       <% end %>
 
-  	<% review.tags.each do |tag| %>
-  		<%= tag.name %> 
-  	<% end %>
-  	</p>
-    
-     
-
- <%end%>
+  		<% review.tags.each do |tag| %>
+  			<%= tag.name %> 
+  		<% end %>
+ 		<% end %>
+	<% end %>
 <br />
 <br />
 <%= link_to 'Back', root_path %>

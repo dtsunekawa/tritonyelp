@@ -19,6 +19,7 @@ db/backups
 tmp/**/*
 config/database.yml
 public/uploads
+public/user_images/**/*
 vendor/.DS_Store
 Gemfile
 *.DS_Store
