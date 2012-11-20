@@ -29,7 +29,7 @@
       <% if user_signed_in? %>
 			<br />
 			<br />
-      <%= button_to "This Review Was Helpful",{ :controller => 'uservotes',
+      <%= button_to "This Review Was Helpful", { :controller => 'uservotes',
                           :action => 'upvote',
                           :pid => current_user.id,
                           :rid => review.id,
@@ -40,7 +40,7 @@
 			<% if !review.tags.empty? %>
   			<br />
 				<small><i>Tags: <% review.tags.each do |tag| %>
-  				<%= tag.name %></i>
+  				<%= tag.name %>
   			<% end %></i></small>
 			<% end %>
  		<% end %>
