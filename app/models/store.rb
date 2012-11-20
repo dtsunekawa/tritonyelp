@@ -5,6 +5,7 @@ class Store
 	belongs_to :user
 
   field :name, :type => String
+	field :description, :type => String
 	field :x_coord, :type => Float
 	field :y_coord, :type => Float
 	field :avg_rating, :type => Float
