@@ -1,10 +1,18 @@
 class Store
   include Mongoid::Document
+	include Mongoid::Paperclip
 	
 	has_many :reviews
+
+	# For image uploading
+	has_mongoid_attached_file :image, :styles => { :banner => "400", :thumb => "100x100>" },
+	:url => "/user_images/:id/:style/:basename.:extension",
+	:path => ":rails_root/public/user_images/:id/:style/:basename.:extension"
+
 	belongs_to :user
 
   field :name, :type => String
+	field :description, :type => String
 	field :x_coord, :type => Float
 	field :y_coord, :type => Float
 	field :avg_rating, :type => Float

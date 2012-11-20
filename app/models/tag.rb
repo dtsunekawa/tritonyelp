@@ -26,17 +26,39 @@ class Tag
 
 		all_tags.each do |t|
 			if tag_list.has_key?( t.name )
-				tag_list[t.name] = 1 
+				tag_list[t.name] += 1
 			else
-				tag_list[t.name] = 1 + tag_list[t.name].to_i
+				tag_list[t.name] = 1 
 			end 
 		end
 
 		# sort by value in descending order
 		tag_list.sort_by {|k,v| v}.reverse
-		#tag_list.metrics.sort_by{|name, count| count}.reverse
+
+		# print all keys and vals for debugging
+		tag_list.each_pair do |name, count|
+			puts name
+			puts count
+		end
 
 		return tag_list
+	end
+
+	# create tags for a single review, passing in an array of tag names and a review obj
+	def self.create_tags( tag_array, review  )
+		tag_array.uniq# remove any duplicate tag_names in the array
+
+		tag_array.each do |tag_name|
+
+			tag_name = tag_name.strip	# remove leading and trailing whitespace
+			puts tag_name
+
+			next if tag_name.blank?	# skip any empty strings
+
+			tag = Tag.new( :name => tag_name )
+			tag.review = review
+			tag.save
+		end
 	end
 
 end

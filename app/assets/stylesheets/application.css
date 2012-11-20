@@ -157,3 +157,9 @@ table#stores th, table#stores td {
   padding: 4px;
   text-align: left;
 }
+
+.banner {
+	padding: 5px;
+	border: 1px solid #EEE;
+	border-radius: 10px;
+}

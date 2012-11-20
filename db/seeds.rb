@@ -7,8 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Mongoid.purge!
 
+<<<<<<< HEAD
 admin = User.create(name: 'John', email: 'testuser@ucsd.edu', lname: 'Doe', role: 'admin', password: 'testing123')
 store = Store.create(name: 'John\'s Pizza', user: admin)
+=======
+puts 'PURGING DATABASE'
+Mongoid.purge!
+
+
+	admin = User.create(name: 'John', email: 'testuser@ucsd.edu', lname: 'Doe', role: 'admin', password: 'testing123')
+	store = Store.create(name: 'John\'s Pizza', user: admin)
+>>>>>>> 213a41c61157ff681f686d5c1e1595ca955e3a21
 
 
 ###########################
@@ -71,7 +80,7 @@ s_bookStore.save!
 puts 'New store created: ' << s_bookStore.name
 s_Geisel = Store.create! :name => 'Geisel', :avg_rating => 9.8, :avg_price => 0.0, :x_coord => 48.89, :y_coord => 67.93
 s_Geisel.user = u_merchant4._id
-s_Geisel.save!
+s_Geisel.save! The Burritos are so good and cheap The Burritos are so good and cheap
 puts 'New store created: ' << s_Geisel.name
 s_cse_lab = Store.create! :name => 'Cse Lab', :avg_rating => 9.9, :avg_price => 0.0, :x_coord => 48.89, :y_coord => 67.93
 s_cse_lab.user = u_merchant4._id
@@ -103,19 +112,19 @@ puts 'New review created: ' << r_user_sunshine.content
 
 # seeding tags
 puts 'SETTING UP DEFAULT TAGS'
-tag = Tag.create! :name => 'Burrito'
+tag = Tag.create! :name => '#Burrito'
 tag.review = r_user_goodies._id
 tag.save!
 puts 'New tag created: ' << tag.name
-tag2 = Tag.create! :name => 'Fries'
+tag2 = Tag.create! :name => '#Fries'
 tag2.review = r_user_burger_king._id
 tag2.save!
 puts 'New tag created: ' << tag2.name
-tag3 = Tag.create! :name => 'Chinese Food'
+tag3 = Tag.create! :name => '#Chinese Food'
 tag3.review = r_user_panda._id
 tag3.save!
 puts 'New tag created: ' << tag3.name
-tag4 = Tag.create! :name => 'Market Place'
+tag4 = Tag.create! :name => '#Market Place'
 tag4.review = r_user_sunshine._id
 tag4.save!
 puts 'New tag created: ' << tag4.name

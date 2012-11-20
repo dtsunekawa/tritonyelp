@@ -7,6 +7,10 @@ class ReviewsController < ApplicationController
 	end
 
 	def new
+<<<<<<< HEAD
+=======
+		@votes = Uservote.all
+>>>>>>> 213a41c61157ff681f686d5c1e1595ca955e3a21
 		@store = Store.find(params[:store_id])
 		@tags = Tag.all_unique
 		@review = Review.new
@@ -17,7 +21,9 @@ class ReviewsController < ApplicationController
 	end
 
 	def create
-		tag_list = params[:review][:tag_names] || []
+		tag_string = params[:tag_string] #retrieve sting of tag names and make it into an array
+		tag_list = tag_string.split(/,/)
+
 		@review = Review.new(params[:review])
 		@review.user = current_user
 		@review.store = params[:store_id] 
@@ -25,12 +31,7 @@ class ReviewsController < ApplicationController
 			if @review.save!
 
 				#create all tags
-				tag_list.each do |tag_name|
-					tag = @review.tags.new( :name => tag_name )
-					puts tag.name
-
-					tag.save
-				end
+				Tag.create_tags( tag_list, @review )
 
 				format.html {redirect_to root_path, :notice => 'Review was successfully created'}
 			else
