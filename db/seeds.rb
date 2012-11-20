@@ -5,9 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Mongoid.purge!
 
-	admin = User.create(name: 'John', email: 'testuser@ucsd.edu', lname: 'Doe', role: 'admin', password: 'testing123')
-	store = Store.create(name: 'John\'s Pizza', user: admin)
+admin = User.create(name: 'John', email: 'testuser@ucsd.edu', lname: 'Doe', role: 'admin', password: 'testing123')
+store = Store.create(name: 'John\'s Pizza', user: admin)
 
 
 ###########################
