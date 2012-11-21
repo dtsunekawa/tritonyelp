@@ -8,7 +8,6 @@
 	<br />
 	<%= link_to 'Edit', edit_store_path(@store) %>
 	<%= link_to 'Review', new_store_review_path(@store) %>
-<<<<<<< HEAD
   <% @store.reviews.each do |review| %>
   	<h5> <%= review.user.name %> </h5>
   	<p> <%= review.content %><br>
@@ -17,7 +16,6 @@
   	<% end %>
   	</p>
   <% end %>
-=======
 
 
 	<% if !@store.reviews.empty? %>
@@ -55,7 +53,6 @@
 			<% end %>
  		<% end %>
 	<% end %>
->>>>>>> 213a41c61157ff681f686d5c1e1595ca955e3a21
 <br />
 <br />
 <%= link_to 'Back', root_path %>

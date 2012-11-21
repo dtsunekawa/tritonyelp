@@ -5,19 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Mongoid.purge!
-
-<<<<<<< HEAD
-admin = User.create(name: 'John', email: 'testuser@ucsd.edu', lname: 'Doe', role: 'admin', password: 'testing123')
-store = Store.create(name: 'John\'s Pizza', user: admin)
-=======
 puts 'PURGING DATABASE'
 Mongoid.purge!
 
-
-	admin = User.create(name: 'John', email: 'testuser@ucsd.edu', lname: 'Doe', role: 'admin', password: 'testing123')
-	store = Store.create(name: 'John\'s Pizza', user: admin)
->>>>>>> 213a41c61157ff681f686d5c1e1595ca955e3a21
+admin = User.create(name: 'John', email: 'testuser@ucsd.edu', lname: 'Doe', role: 'admin', password: 'testing123')
+store = Store.create(name: 'John\'s Pizza', user: admin)
 
 
 ###########################
