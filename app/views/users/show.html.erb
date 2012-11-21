@@ -1,8 +1,12 @@
-
-<% @users.each do | user | %>
-<tr>
-  <td> <%= user.name %> </td>
-  <td> <%= user.lname %> </td>
-</tr>
+<% if current_user.is_admin?  %>
+  <%= sup %>
+  <% else %>
+  <%= nope %>
+	<% @users.each do | user | %>
+	<tr>
+  		<td> <%= user.name %> </td>
+  		<td> <%= user.lname %> </td>
+	</tr>
 <br />
+<% end %>
 <% end %>
