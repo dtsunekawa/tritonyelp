@@ -18,8 +18,14 @@
   			<td> <%= user.email %> </td>
   			<td> <%= user.role %> </td>
   			<td> <%= user.last_sign_in_at %> </td>
-        <td> <%= link_to "delete" %> </td>
-        <td> <%= link_to "update" %> </td>
+        <td> <%= link_to "delete", { :controller => 'users',
+                                     :action     => 'delete',
+                                     :id         =>  user.id,
+                                     :confirm    => "Are you sure?",
+                                     :method     =>  'remove' } %> </td>
+
+                                     
+        <td> <%= link_to "edit" %> </td>
 
 		</tr>
 
@@ -27,7 +33,6 @@
 
 	<% end %>
 	</table>
-
 <% end %>
 
 
