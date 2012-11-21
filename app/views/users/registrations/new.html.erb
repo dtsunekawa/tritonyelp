@@ -19,7 +19,7 @@
   <%= f.password_field :password_confirmation %></div>
 
   <div><%= f.label :account_type %><br />
-  <%= f.select :role , options_for_select(['Customer','Merchant']) %></div><br />
+  <%= f.select :role, options_for_select([:customer, :merchant]) %></div><br />
   <div><%= f.submit "Sign up" %></div>
 
 <% end %>
