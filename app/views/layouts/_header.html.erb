@@ -4,9 +4,11 @@
 		<ul>
 			<li><%= link_to "Home", root_path %></li>
 			<% if !user_signed_in? %>
+
 			<li><%= link_to "Register", '/users/sign_up' %></li>
 			<li><%= link_to "Sign In", '/users/sign_in' %></li>
 			<% else %>
+				<li><%= link_to "Account", '/users/edit' %></li>
 				<% if current_user.is_merchant? or current_user.is_admin? %>
 					<li><%= link_to "My Stores", user_stores_path(current_user) %></li>
 				<% end %>
