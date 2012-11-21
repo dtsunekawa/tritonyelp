@@ -49,6 +49,9 @@ class StoresController < ApplicationController
 
 	def edit
 		@store = Store.find(params[:id])
+		if !(user_signed_in? and current_user.stores.include?(@store))
+			redirect_to root_path, :flash => { :error => 'You must be the owner of this store to edit it!' }
+		end
 	end
 
 	def update
@@ -74,6 +77,5 @@ class StoresController < ApplicationController
 			format.json { head :no_content }
 		end
 	end
-
 
 end
