@@ -17,10 +17,12 @@
 
 <input type="hidden" id="tag_string" name ="tag_string" />
 
-<%@tags.each_key do |tag| %>
-	<%=check_box_tag "review[tag_names][]", tag, false%>
-	#<%=tag%><br>
-<%end%>
+<% if @tags.present? %>
+    <%@tags.each_key do |tag| %>
+    	<%=check_box_tag "review[tag_names][]", tag, false%>
+    	#<%=tag%><br>
+    <%end%>
+<% end %>
 
 
     <meta charset="utf-8" />
@@ -57,9 +59,11 @@
 <body>
  
 <ol id="selectable">
-    <%@tags.each_key do |tag| %>
-    	<li class="ui-widget-content"> <%=tag%> </li>
-    <%end%>
+    <% if @tags.present? %>
+        <%@tags.each_key do |tag| %>
+    	   <li class="ui-widget-content"> <%=tag%> </li>
+        <%end%>
+    <% end %>
 </ol>
  
 <p id="feedback">

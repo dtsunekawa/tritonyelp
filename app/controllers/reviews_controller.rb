@@ -38,6 +38,21 @@ class ReviewsController < ApplicationController
 		end
 	end
 
+	def update
+		@review = Review.find(params[:id])
+		respond_to do |format|
+			if @review.update_attributes(params[:review])
+				format.html { redirect_to root_path, :notice => 'Review was successfully updated.' }
+				format.json { head :no_content }
+			else
+				format.html { render :action => 'edit' }
+				format.json { render :json => @review.errors, :status => :unprocessable_entity }
+			end
+		end
+		
+	end
+
+
 	def edit
 		@review = Review.find(params[:id])
 	end
