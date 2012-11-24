@@ -19,14 +19,17 @@
   			<td> <%= user.email %> </td>
   			<td> <%= user.role %> </td>
   			<td> <%= user.last_sign_in_at %> </td>
-        <td> <%= link_to "delete", { :controller => 'users',
+        <td> <%= link_to "delete", ({ :controller => 'users',
                                      :action     => 'delete',
                                      :id         =>  user.id,
-                                     :confirm    => "Are you sure?",
-                                     :method     =>  'remove' } %> </td>
+                                     :confirm    => 'Are you sure?',
+                                     :method     =>  'remove' }) %> </td>
 
 
-        <td> <%= link_to "edit" %> </td>
+        <td> <%= link_to "edit", { :controller => 'users',
+                                   :action     => 'edit',
+                                   :id         => user.id,
+                                   :method     => 'method' } %> </td>
 
 		</tr>
 

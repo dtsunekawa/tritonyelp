@@ -1,0 +1,17 @@
+<%= form_for :user do |f| %>
+
+<%= f.label :first_name %> <br />
+<%= f.text_field :name  ,:value => @users.name%><br />
+
+<%= f.label :last_name %> <br />
+<%= f.text_field :lname  ,:value => @users.lname%><br />
+
+<%= f.label :email %> <br />
+<%= f.email_field :email  ,:value => @users.email%><br />
+
+<%= f.label :id %> <br />
+<%= f.text_field :id  ,:value => @users.id%><br />
+
+<br />
+<%= f.submit ({:confirm => "Are you sure?"}) %>
+<% end %>

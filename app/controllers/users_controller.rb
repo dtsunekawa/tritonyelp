@@ -6,8 +6,11 @@ class UsersController < ApplicationController
 
   def show
   	@users = User.find(params[:id])
-		
   end
+
+  def edit
+    @users = User.find(params[:id])
+  end 
 
 	def show_stores
 		@user = User.find(params[:id])
@@ -18,7 +21,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    users = User.find(params[:id])
+    @users = User.find(params[:id])
+    if(@users.update_attributes(params[:user]))
+      redirect_to :action => 'index'
+    end
+
   end
 
 
@@ -33,21 +40,6 @@ class UsersController < ApplicationController
     end
 
   end 
-
-  
-  #def delete
-  #  user = User.where('id = ?', params[:id])
-
-  #  if(user.is_admin?)
-  #      user.destroy
-  #      render('index')
-  #  else
-    	#display a message
-  #  end
-  #end
-
-
- 
 
   
 end
