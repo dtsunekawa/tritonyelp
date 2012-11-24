@@ -1,16 +1,19 @@
-<%= form_for :user do |f| %>
+<%= form_for (@users) do |f| %>
 
 <%= f.label :first_name %> <br />
-<%= f.text_field :name  ,:value => @users.name%><br />
+<%= f.text_field :name  ,:value => @users.name %><br />
 
 <%= f.label :last_name %> <br />
-<%= f.text_field :lname  ,:value => @users.lname%><br />
+<%= f.text_field :lname  ,:value => @users.lname %><br />
 
 <%= f.label :email %> <br />
-<%= f.email_field :email  ,:value => @users.email%><br />
+<%= f.email_field :email  ,:value => @users.email %><br />
+
+<%= f.label :role %> <br />
+<%= f.text_field :role  ,:value => @users.role %><br />
 
 <%= f.label :id %> <br />
-<%= f.text_field :id  ,:value => @users.id%><br />
+<%= f.text_field :id  ,:value => @users.id %><br />
 
 <br />
 <%= f.submit ({:confirm => "Are you sure?"}) %>

@@ -11,6 +11,7 @@
 				<li><%= link_to "Account", '/users/edit' %></li>
 				<% if current_user.is_merchant? or current_user.is_admin? %>
 					<li><%= link_to "My Stores", user_stores_path(current_user) %></li>
+				    <li><%= link_to "Account List", '/users/index' %></li>
 				<% end %>
 			<li><%= link_to "Sign Out", '/users/sign_out' %></li>
 			<% end %>

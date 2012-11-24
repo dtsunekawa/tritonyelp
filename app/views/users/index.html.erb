@@ -1,4 +1,4 @@
-<h3>User List</h3>
+<h3>User Accounts Management</h3>
 <% if user_signed_in? %>
 <% if current_user.is_admin? %>
 	<table border ="1" >
@@ -28,8 +28,8 @@
 
         <td> <%= link_to "edit", { :controller => 'users',
                                    :action     => 'edit',
-                                   :id         => user.id,
-                                   :method     => 'method' } %> </td>
+                                   :id         => user.id
+                                   } %> </td>
 
 		</tr>
 

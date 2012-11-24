@@ -11,15 +11,17 @@ devise_for :users do
   post 'uservotes/upvote'
   post 'users/edit'
   get '/stores/show'
+
+
 end
+
+resources :users
 
 resources :stores do
   resources :reviews
 
 end
-
-#match '/users/:id', :to 'users#edit', :as => :user, :using => :get
-
+match '/users/edit/:id', to: 'users#edit', as: :user_edit, using: :get
 match '/users/:id/stores', to: 'users#show_stores', as: :user_stores, using: :get
 
 resources :reviews
