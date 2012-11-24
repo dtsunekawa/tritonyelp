@@ -72,7 +72,7 @@ s_bookStore.save!
 puts 'New store created: ' << s_bookStore.name
 s_Geisel = Store.create! :name => 'Geisel', :avg_rating => 9.8, :avg_price => 0.0, :x_coord => 48.89, :y_coord => 67.93
 s_Geisel.user = u_merchant4._id
-s_Geisel.save! The Burritos are so good and cheap The Burritos are so good and cheap
+s_Geisel.save!
 puts 'New store created: ' << s_Geisel.name
 s_cse_lab = Store.create! :name => 'Cse Lab', :avg_rating => 9.9, :avg_price => 0.0, :x_coord => 48.89, :y_coord => 67.93
 s_cse_lab.user = u_merchant4._id
