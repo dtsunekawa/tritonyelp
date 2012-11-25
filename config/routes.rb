@@ -11,6 +11,7 @@ devise_for :users do
   post 'uservotes/upvote'
   post 'users/edit'
   get '/stores/show'
+  get '/reviews/destroy'
 
 
 end

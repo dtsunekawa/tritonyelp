@@ -57,7 +57,11 @@ class ReviewsController < ApplicationController
 		@review = Review.find(params[:id])
 	end
 	
-	def delete
-		Review.delete_all
+	def destroy
+		review = Review.find(params[:review])
+		review.destroy
+		respond_to do |format|
+			format.html { redirect_to root_path, :notice => 'Review was successfully removed.' }
+		end
 	end
 end

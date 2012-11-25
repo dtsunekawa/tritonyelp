@@ -12,7 +12,7 @@ class Review
   belongs_to :store
   has_many :tags, :dependent => :destroy
   accepts_nested_attributes_for :tags
-  has_many :uservotes
+  has_many :uservotes, :dependent => :destroy
 
   # This throws an error when creating a Review
   #references_many :tags

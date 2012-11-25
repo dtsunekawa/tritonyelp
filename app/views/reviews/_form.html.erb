@@ -17,14 +17,6 @@
 
 <input type="hidden" id="tag_string" name ="tag_string" />
 
-<% if @tags.present? %>
-    <%@tags.each_key do |tag| %>
-    	<%=check_box_tag "review[tag_names][]", tag, false%>
-    	#<%=tag%><br>
-    <%end%>
-<% end %>
-
-
     <meta charset="utf-8" />
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
     <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
