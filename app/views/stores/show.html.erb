@@ -26,7 +26,7 @@
   		<!-- Edit link for admin -->
   		<% if current_user.is_admin? %> 
   			<%= link_to 'Admin Edit', edit_store_review_path(@store, review) %>
-        <%= link_to( "Remove Review", {:controller => 'reviews', :action => 'destroy', :review=> review}, :method => 'delete', :confirm=>'Remove this Review?') %>
+        <%= link_to 'Remove Review', review, :confirm => 'Remove this Review?', :method => :delete %>
   		<% end %> 
 
 		<br />

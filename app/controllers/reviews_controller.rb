@@ -27,11 +27,8 @@ class ReviewsController < ApplicationController
 		@review.store = params[:store_id] 
 		respond_to do |format|
 			if @review.save!
-
-				#create all tags
 				Tag.create_tags( tag_list, @review )
-
-				format.html {redirect_to root_path, :notice => 'Review was successfully created'}
+				format.html {redirect_to @review.store, :notice => 'Review was successfully created'}
 			else
 				format.html {render :action => "new"}
 			end
@@ -58,10 +55,10 @@ class ReviewsController < ApplicationController
 	end
 	
 	def destroy
-		review = Review.find(params[:review])
+		review = Review.find(params[:id])
 		review.destroy
 		respond_to do |format|
-			format.html { redirect_to root_path, :notice => 'Review was successfully removed.' }
+			format.html { redirect_to :back, :notice => 'Review was successfully removed.' }
 		end
 	end
 end

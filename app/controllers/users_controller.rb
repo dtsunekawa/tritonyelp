@@ -34,6 +34,7 @@ before_filter :require_admin, :only => [:index, :delete]
 			user = User.find(params[:id])
 			user_first = user.name || ""
 			user_last = user.lname || ""
+			user.reviews.each { |review| review.destroy }
       user.destroy
       flash[:notice] = "#{user_first} #{user_last} deleted."
       redirect_to :controller => 'users' , :action => :index 
