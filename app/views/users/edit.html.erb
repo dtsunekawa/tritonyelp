@@ -10,11 +10,12 @@
 <%= f.email_field :email  ,:value => @users.email %><br />
 
 <%= f.label :role %> <br />
-<%= f.text_field :role  ,:value => @users.role %><br />
+<%= f.select :role, options_for_select([:customer, :merchant, :admin], @users.role) %><br />
 
+<!-- We probably should not allow ID's to be changed as this will only break things.
 <%= f.label :id %> <br />
 <%= f.text_field :id  ,:value => @users.id %><br />
-
+-->
 <br />
 <%= f.submit ({:confirm => "Are you sure?"}) %>
 <% end %>
