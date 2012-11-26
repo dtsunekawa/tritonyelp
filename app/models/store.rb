@@ -9,6 +9,9 @@ class Store
 	:url => "/user_images/:id/:style/:basename.:extension",
 	:path => ":rails_root/public/user_images/:id/:style/:basename.:extension"
 
+	validates_attachment_size :image, :less_than => 5.megabytes
+	validates_attachment_content_type :image, :content_type => ['image/jpg', 'image/png', 'image/jpeg']
+
 	belongs_to :user
 
   	field :name, :type => String
