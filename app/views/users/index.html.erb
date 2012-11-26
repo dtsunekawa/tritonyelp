@@ -1,6 +1,4 @@
 <h3>User Accounts Management</h3>
-<% if user_signed_in? %>
-<% if current_user.is_admin? %>
 	<table border ="1" >
   		<tr>
   			<th> First Name </th>
@@ -19,11 +17,10 @@
   			<td> <%= user.email %> </td>
   			<td> <%= user.role %> </td>
   			<td> <%= user.last_sign_in_at %> </td>
-        <td> <%= link_to "delete", ({ :controller => 'users',
+        <td> <%= link_to "delete", { :controller => 'users',
                                      :action     => 'delete',
-                                     :id         =>  user.id,
-                                     :confirm    => 'Are you sure?',
-                                     :method     =>  'remove' }) %> </td>
+                                     :id         =>  user.id }, 
+																		 :confirm => 'Are you sure you want to delete this user?' %> </td>
 
 
         <td> <%= link_to "edit", { :controller => 'users',
@@ -37,7 +34,5 @@
 
 	<% end %>
 	</table>
-<% end %>
-<% end %>
 
 

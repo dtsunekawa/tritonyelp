@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-#class UsersController < Devise::RegistrationsController
+
+before_filter :require_admin, :only => [:index, :delete]
+
   def index
   	@users = User.all
   end
@@ -28,17 +30,13 @@ class UsersController < ApplicationController
 
   end
 
-
   def delete
-    if(current_user.is_admin?)
-      User.find(params[:id]).destroy
-       flash[:notice] = "user deleted."
-       redirect_to :controller => 'users' , :action => :index 
-    else
-       flash[:notice] = "you are not an admin."
-       redirect_to :controller => 'users' , :action => :index 
-    end
-
+			user = User.find(params[:id])
+			user_first = user.name || ""
+			user_last = user.lname || ""
+      user.destroy
+      flash[:notice] = "#{user_first} #{user_last} deleted."
+      redirect_to :controller => 'users' , :action => :index 
   end 
 
   
