@@ -10,9 +10,12 @@
 			</ul>
 		</div>
 	<% end %>
-
 <div class="field">
-	<%= f.text_area :content, :cols => '75%', :rows=> '10%' %>
+    <%= f.text_area :content, :cols => '75%', :rows=> '10%' %>
+</div>
+<br />
+<div class="field">
+    Dollars spent? <%= f.text_field :price, :size => 10 %>
 </div>
 
 <input type="hidden" id="tag_string" name ="tag_string" />
@@ -49,7 +52,7 @@
     </script>
 </head>
 <body>
- 
+
 <ol id="selectable">
     <% if @tags.present? %>
         <%@tags.each_key do |tag| %>
