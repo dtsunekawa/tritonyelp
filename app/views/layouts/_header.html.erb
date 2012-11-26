@@ -8,7 +8,7 @@
 			<li><%= link_to "Register", '/users/sign_up' %></li>
 			<li><%= link_to "Sign In", '/users/sign_in' %></li>
 			<% else %>
-				<li><%= link_to "Account", '/users/edit' %></li>
+				<li><%= link_to "Account", edit_user_path(current_user) %></li>
 				<% if current_user.is_admin? %>
 					 <li><%= link_to "Account List", '/users/index' %></li>
 				<% end %>
