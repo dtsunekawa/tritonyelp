@@ -28,6 +28,19 @@
 	<% @stores.sort_by{ |store| store.avg_rating || 0}.reverse.each do |store| %>
 	<tbody>
 		<td><%= link_to store.name, store %></td>
+		<% ##Calculate avg_rating.  Wrong place?
+			sum = 0.0
+			c = 0.0
+			store.reviews.each do |review|
+				if review[:rating] != nil
+					sum += review[:rating]
+					c += 1
+				end
+			end
+			if c != 0
+				store.avg_rating = "%.2f" % (sum/c)
+			else
+			end %>
 		<td> <%= store.avg_rating %> </td>
 		<% ################################ Calculate avg_price
 		sum = 0.0
