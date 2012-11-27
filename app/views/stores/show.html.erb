@@ -38,6 +38,11 @@
   		<%= review.content %>
 
   		<br /> 
+  		<% r = review.rating %>
+  			Overall Experiance: <%= r %>
+  		<br />
+
+
   		<% if review.price != nil 
 			 p = "%.2f" % review.price 
 			else
