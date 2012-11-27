@@ -37,10 +37,13 @@
 
   		<%= review.content %>
 
-  		<br />
-
-  		<font color = "green">Money spent: $<%= review.price %></font>
-
+  		<br /> 
+  		<% if review.price != nil 
+			 p = "%.2f" % review.price 
+			else
+			 p = review.price
+			 end%>
+  			<font color = "green">Money spent: $<%= p %></font>
   		<br />
 
 			<% up_count = review.uservotes.upcount(review.id) %>
