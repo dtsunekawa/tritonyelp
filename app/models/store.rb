@@ -5,7 +5,7 @@ class Store
 	has_many :reviews
 
 	# For image uploading
-	has_mongoid_attached_file :image, :styles => { :banner => "400", :thumb => "100x100>" },
+	has_mongoid_attached_file :image, :styles => { :banner => "600>", :thumb => "100x100>" },
 	:url => "/user_images/:id/:style/:basename.:extension",
 	:path => ":rails_root/public/user_images/:id/:style/:basename.:extension"
 
