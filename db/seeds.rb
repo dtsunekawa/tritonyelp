@@ -11,6 +11,9 @@ Mongoid.purge!
 admin = User.create(name: 'John', email: 'testuser@ucsd.edu', lname: 'Doe', role: 'admin', password: 'testing123')
 store = Store.create(name: 'John\'s Pizza', user: admin)
 
+admin = User.create(name: 'Rick', lname: 'Ord', email: 'admin@admin.com', role: 'admin', password: 'lkjhgfdsa')
+merchant = User.create(name: 'Paul', lname: 'Kube', email: 'merchant@merchant.com', role: 'merchant', password: 'lkjhgfdsa')
+customer = User.create(name: 'Walter', lname: 'Burkhardt', email: 'customer@customer.com', role: 'customer', password: 'lkjhgfdsa')
 
 ###########################
 # How to seed database
