@@ -55,7 +55,24 @@
 			store.avg_price = "%.2f" % (sum/c)
 		else
 		end %>
-		<td> $<%= store.avg_price %> </td>
+		<td> 
+		<% 
+			if (store.avg_price != nil)
+				p = store.avg_price
+				if (p <= 4 && p > 3.5)
+		%>
+  				<font color = #FCC919>$$$$</font>
+  			<%	elsif (p <= 3.5 && p > 2.5) %>
+  				<font color = #FCC919>$$$</font>
+  			<%	elsif (p <= 2.5 && p > 1.5) %>
+  				<font color = #FCC919>$$</font>
+  			<%	elsif (p <= 1.5 && p > 0) %>
+  				<font color = #FCC919>$</font>
+  			<% 	else 
+  				end
+  			else 
+  			end %>	
+		</td>
 		<td> (<%= store.x_coord %>, <%= store.x_coord %>) </td>	
 	</tbody>
 <% end %>

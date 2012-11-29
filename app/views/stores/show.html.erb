@@ -43,12 +43,18 @@
   		<br />
 
 
-  		<% if review.price != nil 
-			 p = "%.2f" % review.price 
-			else
-			 p = review.price
-			 end%>
-  			<font color = "green">Money spent: $<%= p %></font>
+  		<% 
+			p = review.price
+			if (p == 4)
+		%>
+  			Price range: <font color = #FCC919>$$$$</font>
+  		<%	elsif (p == 3) %>
+  			Price range: <font color = #FCC919>$$$</font>
+  		<%	elsif (p == 2) %>
+  			Price range: <font color = #FCC919>$$</font>
+  		<%	else %>
+  			Price range: <font color = #FCC919>$</font>
+  		<% end %>	
   		<br />
 
 			<% up_count = review.uservotes.upcount(review.id) %>
