@@ -5,20 +5,26 @@
 	<center><%= image_tag @store.image.url(:banner), :class => "banner" %></center>
 	<br />
 	<% end %>
-
 	<%= @store.description %>
 	<br />
-	<br />
+	
+		<div class="average_rating" style="<% if @store.avg_rating == 0 %>display:none;<% end %>">
+			Average rating: <%= @store.avg_rating %> star(s).
+			<br />
+			<br />
+		</div>
+	
 	<% form_id = "store_#{@store.id}_rating" %>
 	<% if user_signed_in? %>
 		<% user_id = current_user.id %>
 	<% else %>
 		<% user_id = -1 %>
 	<% end %>
+	Your rating:
 	<%= form_for @store.ratings.find_by(user_id: user_id) || @store.ratings.new, :html => {:id => form_id, :class => "star_rating_form"} do |f| %>
 		<%= f.hidden_field :store_id, :value => @store.id %>
 		<% if user_signed_in? %>
-		<%= f.hidden_field :user_id, :value => current_user.id %>
+			<%= f.hidden_field :user_id, :value => current_user.id %>
 		<% end %>	
 		<%= f.hidden_field :stars, :id => form_id + "_stars" %>
 	<% end %>
@@ -30,7 +36,7 @@
 	<% if user_signed_in? and current_user.stores.include?(@store) %>
 	<%= link_to 'Edit', edit_store_path(@store) %>
 	<% end %>
-	<%= link_to 'Review', new_store_review_path(@store) %>
+	<%= link_to 'Leave a Review', new_store_review_path(@store) %>
 
  
 
@@ -43,9 +49,9 @@
 		<br />
   		
   		<!-- Edit link for admin -->
-  		<% if current_user.is_admin? %> 
+  		<% if user_signed_in? and current_user.is_admin? %> 
   			<!--<%= link_to 'Admin Edit', edit_store_review_path(@store, review) %>-->
-        <%= link_to 'Remove Review', review, :confirm => 'Remove this Review?', :method => :delete %>
+        	<%= link_to 'Remove Review', review, :confirm => 'Remove this Review?', :method => :delete %>
   		<% end %> 
 
 		<br />

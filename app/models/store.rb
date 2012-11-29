@@ -32,4 +32,19 @@ class Store
 			all
 		end
 	end
+
+	def avg_rating
+		average_rating = 0
+		count = 0
+		ratings.each do |rating| 
+			average_rating += rating.stars
+			count += 1
+		end
+		
+		if count != 0
+			average_rating / count
+		else
+			count
+		end
+	end
 end
