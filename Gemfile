@@ -7,6 +7,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'jquery-tablesorter'
 gem 'jquery-rails'
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem "mongoid", ">= 3.0.3"

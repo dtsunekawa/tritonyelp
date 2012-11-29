@@ -5,24 +5,16 @@ root :to => "home#index"
 devise_for :users do
 	get '/users/sign_out' => 'devise/sessions#destroy'
   get '/users/index'
-  get '/users/show'
-  get '/users/edit' 
-  get 'users/delete'
-  post 'uservotes/upvote'
-  post 'users/edit'
-  get '/stores/show'
-  get '/reviews/destroy'
-
-
+  get '/users/delete'
+  post '/uservotes/upvote'
 end
 
 resources :users
 
 resources :stores do
   resources :reviews
-
 end
-match '/users/edit/:id', to: 'users#edit', as: :user_edit, using: :get
+
 match '/users/:id/stores', to: 'users#show_stores', as: :user_stores, using: :get
 
 resources :reviews

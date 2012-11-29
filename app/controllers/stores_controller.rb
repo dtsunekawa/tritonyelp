@@ -38,7 +38,7 @@ class StoresController < ApplicationController
 		@store = Store.new(params[:store])
 		respond_to do |format|
 			if @store.save
-				format.html { redirect_to @store, :notice => 'Store was successfully created' }
+				format.html { redirect_to @store, :notice => "#{@store.name} was successfully created." }
 				format.json { render :json => @store, :status => :created, :location => @store }
 			else
 				format.html { render :action => "new" }
@@ -50,7 +50,7 @@ class StoresController < ApplicationController
 	def edit
 		@store = Store.find(params[:id])
 		if !(user_signed_in? and (current_user.stores.include?(@store) or current_user.role == 'admin'))
-			redirect_to root_path, :flash => { :error => 'You must be the owner of this store to edit it!' }
+			redirect_to root_path, :flash => { :error => "You must be the owner of #{@store.name} to edit it!" }
 		end
 	end
 
@@ -58,7 +58,7 @@ class StoresController < ApplicationController
 		@store = Store.find(params[:id])
 		respond_to do |format|
 			if @store.update_attributes(params[:store])
-				format.html { redirect_to @store, :notice => 'Store was successfully updated.' }
+				format.html { redirect_to @store, :notice => "#{@store.name} was successfully updated." }
 				format.json { head :no_content }
 			else
 				format.html { render :action => 'edit' }
@@ -73,7 +73,7 @@ class StoresController < ApplicationController
 		@store.destroy
 
 		respond_to do |format|
-			format.html { redirect_to stores_path }
+			format.html { redirect_to stores_path, :notice => "#{@store.name} was successfully deleted." }
 			format.json { head :no_content }
 		end
 	end
