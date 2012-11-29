@@ -62,13 +62,13 @@ development:
     production:
       sessions:
         default:
-          database: db_name
-          username: username
-          password: password
-        hosts:
-            - my.host:my_port
-        options:
-            consistency: :strong
+        #  database: db_name
+        #  username: username
+        #  password: password
+       # hosts:
+        #    - my.host:my_port
+       # options:
+       #     consistency: :strong
             uri: <%= ENV['MONGOHQ_URL'] %>
 test:
   sessions:
