@@ -10,11 +10,13 @@ devise_for :users do
 end
 
 resources :users
+resources :ratings
 
 resources :stores do
   resources :reviews
 end
 
+match '/ratings/:id', to: 'ratings#update', using: :post
 match '/users/:id/stores', to: 'users#show_stores', as: :user_stores, using: :get
 
 resources :reviews

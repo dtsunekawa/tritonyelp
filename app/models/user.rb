@@ -35,9 +35,11 @@ class User
 
   has_many :reviews
 	has_many :stores
+  has_many :ratings
 
   #user has a foreign key to uservotes
   has_many :uservotes
+  #has_many :rated_stores, :through => :ratings, :source => :stores
 
   #referenced_in :review
   #Cam - The above line is currently broken

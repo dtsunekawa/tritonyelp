@@ -3,6 +3,8 @@ class Store
 	include Mongoid::Paperclip
 	
 	has_many :reviews
+	has_many :ratings
+
 
 	# For image uploading
 	has_mongoid_attached_file :image, :styles => { :banner => "600>", :thumb => "100x100>" },
