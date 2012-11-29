@@ -11,10 +11,12 @@ class Store
 
 	validates_attachment_size :image, :less_than => 5.megabytes
 	validates_attachment_content_type :image, :content_type => ['image/jpg', 'image/png', 'image/jpeg']
+	validates :name, :presence => true
+	validates :description, :presence => true
 
 	belongs_to :user
 
-  	field :name, :type => String
+  field :name, :type => String
 	field :description, :type => String
 	field :x_coord, :type => Float
 	field :y_coord, :type => Float
