@@ -27,7 +27,7 @@ class Store
 
 	def self.search(search)
 		if search
-			where(name: /(#{Regexp.quote(search)})/i)
+			result = any_of({ name: /(#{Regexp.quote(search)})/i }, { description: /(#{Regexp.quote(search)})/i })
 		else
 			all
 		end

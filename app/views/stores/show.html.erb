@@ -7,6 +7,7 @@
 	<% end %>
 	<%= @store.description %>
 	<br />
+	<br />
 	<!-- Begin Store Ratings Implementation -->
 		<div class="average_rating" style="<% if @store.avg_rating == 0 %>display:none;<% end %>">
 			Average rating: <div id="average_rating" style="display:inline;"><%= @store.avg_rating_str %></div>
