@@ -4,7 +4,7 @@ class Review
   ##Content
   field :content,		:type => String
 	field :rating, :type => Integer
-  field :price, :type => Float
+  field :price, :type => Integer
  
   ##Trackable
   field :created_at, :type => Time
