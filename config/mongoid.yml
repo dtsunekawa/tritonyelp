@@ -69,7 +69,7 @@ development:
         #    - my.host:my_port
        # options:
        #     consistency: :strong
-            uri: <%= ENV['MONGOHQ_URL'] %>
+            uri: <%= ENV['mongodb://<user>:<password>@alex.mongohq.com:10045/app9605127'] %>
 test:
   sessions:
     default:
