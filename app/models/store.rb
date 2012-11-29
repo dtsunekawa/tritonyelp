@@ -34,7 +34,7 @@ class Store
 	end
 
 	def avg_rating
-		average_rating = 0
+		average_rating = 0.0
 		count = 0
 		ratings.each do |rating| 
 			average_rating += rating.stars
@@ -42,9 +42,21 @@ class Store
 		end
 		
 		if count != 0
-			average_rating / count
+			(average_rating / count).round(2)
 		else
 			count
 		end
 	end
+
+	def avg_rating_str
+		average_rating = avg_rating
+		if(average_rating > 1)
+			(average_rating).to_s + " stars."
+		elsif(average_rating == 1)
+			(average_rating).to_s + " star."
+		else
+			average_rating
+		end
+	end
+
 end

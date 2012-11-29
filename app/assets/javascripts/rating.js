@@ -22,11 +22,16 @@ $(function() {
 		var stars = star.attr("data-stars");
 
 		$('#' + form_id + '_stars').val(stars);
-		console.log($('#' + form_id).serialize())
 	$.ajax({
 		type: "post",
-		url: $('#' + form_id).attr('action'),
-		data: $('#' + form_id).serialize()
+		url: $('#' + form_id).attr('action') + '.json',
+		data: $('#' + form_id).serialize(),
+		success: function(response){
+			console.log(response);
+			if(response["avg_rating"]){
+					$('#average_rating').text(response["avg_rating"]);
+				}
+			}
 		})
 
 		update_stars();

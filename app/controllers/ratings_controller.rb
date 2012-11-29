@@ -9,7 +9,7 @@ class RatingsController < ApplicationController
 		respond_to do |format|
 			if @rating.save
 				format.html { redirect_to @store }
-				format.json { render :json => @rating, :status => :created, :location => @rating }
+				format.json { render :json => { :avg_rating => @store.avg_rating_str } }
 			else
 				format.html { render :action => "new" }
 				format.json { render :json => @rating.errors, :status => :unprocessable_entity }
@@ -25,7 +25,7 @@ class RatingsController < ApplicationController
    		respond_to do |format|
 			if @rating.save
 				format.html { redirect_to @store }
-				format.json { render :json => @rating, :status => :created, :location => @rating }
+				format.json { render :json => { :avg_rating => @store.avg_rating_str } }
 			else
 				format.html { render :action => "new" }
 				format.json { render :json => @rating.errors, :status => :unprocessable_entity }

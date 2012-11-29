@@ -7,9 +7,9 @@
 	<% end %>
 	<%= @store.description %>
 	<br />
-	
+	<!-- Begin Store Ratings Implementation -->
 		<div class="average_rating" style="<% if @store.avg_rating == 0 %>display:none;<% end %>">
-			Average rating: <%= @store.avg_rating %> star(s).
+			Average rating: <div id="average_rating" style="display:inline;"><%= @store.avg_rating_str %></div>
 			<br />
 			<br />
 		</div>
@@ -31,6 +31,7 @@
 	<% (1..5).each do |i| %>
 		<li class="rating_star" id="<%= form_id %>_<%= i %>" data-stars="<%= i %>" data-form-id="<%= form_id %>"></li>
 	<% end %>
+	<!-- End Store Ratings Implementation -->
 	<br />
 	<br />
 	<% if user_signed_in? and current_user.stores.include?(@store) %>
