@@ -45,31 +45,31 @@ puts 'New user created: ' << u_admin.name
 
 # seeding stores
 puts 'SETTING UP DEFAULT STORES'
-s_goodies = Store.create! :name => 'Goodies', :avg_rating => 9.5, :avg_price => 7.49, :x_coord => 48.89, :y_coord => 67.93
+s_goodies = Store.create! :name => 'Goodies', :avg_rating => 9.5, :avg_price => 3.34, :x_coord => 48.89, :y_coord => 67.93
 s_goodies.user = u_merchant._id
 s_goodies.save!
 puts 'New store created: ' << s_goodies.name
-s_panda = Store.create! :name => 'Panda Express', :avg_rating => 6.5, :avg_price => 6.49, :x_coord => 48.89, :y_coord => 67.93
+s_panda = Store.create! :name => 'Panda Express', :avg_rating => 6.5, :avg_price => 3.66, :x_coord => 48.89, :y_coord => 67.93
 s_panda.user = u_merchant._id
 s_panda.save!
 puts 'New store created: ' << s_panda.name
-s_burger_king = Store.create! :name => 'Burger_king', :avg_rating => 5.5, :avg_price => 5.29, :x_coord => 48.89, :y_coord => 67.93
+s_burger_king = Store.create! :name => 'Burger_king', :avg_rating => 5.5, :avg_price => 1.60, :x_coord => 48.89, :y_coord => 67.93
 s_burger_king.user = u_merchant2._id
 s_burger_king.save!
 puts 'New store created: ' << s_burger_king.name
-s_subway = Store.create! :name => 'Subway', :avg_rating => 8.5, :avg_price => 5.21, :x_coord => 48.89, :y_coord => 67.93
+s_subway = Store.create! :name => 'Subway', :avg_rating => 8.5, :avg_price => 0.05, :x_coord => 48.89, :y_coord => 67.93
 s_subway.user = u_merchant2._id
 s_subway.save!
 puts 'New store created: ' << s_subway.name
-s_bombay = Store.create! :name => 'Bombay Coast', :avg_rating => 6.5, :avg_price => 6.79, :x_coord => 48.89, :y_coord => 67.93
+s_bombay = Store.create! :name => 'Bombay Coast', :avg_rating => 6.5, :avg_price => 3.70, :x_coord => 48.89, :y_coord => 67.93
 s_bombay.user = u_merchant3._id
 s_bombay.save!
 puts 'New store created: ' << s_bombay.name
-s_sunshine = Store.create! :name => 'Sun Shine Market', :avg_rating => 9.5, :avg_price => 5.79, :x_coord => 48.89, :y_coord => 67.93
+s_sunshine = Store.create! :name => 'Sun Shine Market', :avg_rating => 9.5, :avg_price => 3.00, :x_coord => 48.89, :y_coord => 67.93
 s_sunshine.user = u_merchant4._id
 s_sunshine.save!
 puts 'New store created: ' << s_sunshine.name
-s_bookStore = Store.create! :name => 'UCSD Book Store', :avg_rating => 7.5, :avg_price => 98.99, :x_coord => 48.89, :y_coord => 67.93
+s_bookStore = Store.create! :name => 'UCSD Book Store', :avg_rating => 7.5, :avg_price => 3.20, :x_coord => 48.89, :y_coord => 67.93
 s_bookStore.user = u_merchant4._id
 s_bookStore.save!
 puts 'New store created: ' << s_bookStore.name

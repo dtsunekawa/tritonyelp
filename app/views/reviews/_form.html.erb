@@ -15,7 +15,7 @@
 </div>
 <br />
 <div class="field">
-    Dollars spent? <%= f.text_field :price, :size => 10 %>
+    Money Spent? <%= f.select :price, [[1,1],[2,2],[3,3],[4,4]]%> (1=cheap, 4=expensive)
 </div>
 <div class="field">
     Overall Experiance? <%= f.select :rating, [[1,1],[2,2],[3,3],[4,4],[5,5]]%>
