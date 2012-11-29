@@ -21,4 +21,11 @@ class ApplicationController < ActionController::Base
 			redirect_to root_path, :flash => { :error => 'You must be an administrator to use that action!' }
 		end			
 	end
+
+	def js_logged_in
+		if(!user_signed_in?)
+			flash[:error] = "You must be a signed in to rate a store!"
+			render :js => "window.location = '/users/sign_in'"
+		end
+	end
 end
