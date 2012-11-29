@@ -25,12 +25,14 @@ class ReviewsController < ApplicationController
 		@review = Review.new(params[:review])
 		@review.user = current_user
 		@review.store = params[:store_id] 
+		@store = Store.find(params[:store_id])
 		respond_to do |format|
-			if @review.save!
+			if @review.save
 				Tag.create_tags( tag_list, @review )
 				format.html {redirect_to @review.store, :notice => 'Review was successfully created'}
 			else
-				format.html {render :action => "new"}
+				format.html { render :action => 'new' }
+				format.json { render :json => @review.errors, :status => :unprocessable_entity }
 			end
 		end
 	end

@@ -3,8 +3,8 @@ class Review
 
   ##Content
   field :content,		:type => String
-	field :rating, :type => Integer
   field :price, :type => Integer
+  validates :content, :presence => true
  
   ##Trackable
   field :created_at, :type => Time
