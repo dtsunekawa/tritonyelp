@@ -56,6 +56,9 @@ class StoresController < ApplicationController
 
 	def update
 		@store = Store.find(params[:id])
+		if params[:remove_image] == "1"
+			@store.image = nil
+		end
 		respond_to do |format|
 			if @store.update_attributes(params[:store])
 				format.html { redirect_to @store, :notice => "#{@store.name} was successfully updated." }

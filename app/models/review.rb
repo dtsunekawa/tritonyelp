@@ -4,7 +4,7 @@ class Review
   ##Content
   field :content,		:type => String
   field :price, :type => Integer
-  validates :content, :presence => true
+  validates_length_of :content, :minimum => 60, :maximum => 400
  
   ##Trackable
   field :created_at, :type => Time
