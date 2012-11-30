@@ -3,8 +3,8 @@ class Review
 
   ##Content
   field :content,		:type => String
-	field :rating, :type => Integer
   field :price, :type => Integer
+  validates_length_of :content, :minimum => 60, :maximum => 1000
  
   ##Trackable
   field :created_at, :type => Time

@@ -1,21 +1,18 @@
-<%= form_for (@users) do |f| %>
+<%= form_for (@user) do |f| %>
 
 <%= f.label :first_name %> <br />
-<%= f.text_field :name  ,:value => @users.name %><br />
+<%= f.text_field :name  ,:value => @user.name %><br />
 
 <%= f.label :last_name %> <br />
-<%= f.text_field :lname  ,:value => @users.lname %><br />
+<%= f.text_field :lname  ,:value => @user.lname %><br />
 
 <%= f.label :email %> <br />
-<%= f.email_field :email  ,:value => @users.email %><br />
+<%= f.email_field :email  ,:value => @user.email %><br />
 
-<%= f.label :role %> <br />
-<%= f.select :role, options_for_select([:customer, :merchant, :admin], @users.role) %><br />
-
-<!-- We probably should not allow ID's to be changed as this will only break things.
-<%= f.label :id %> <br />
-<%= f.text_field :id  ,:value => @users.id %><br />
--->
+<% if current_user.is_admin? %>
+	<%= f.label :role %> <br />
+	<%= f.select :role, options_for_select([:customer, :merchant, :admin], @user.role) %><br />
+<% end %>
 <br />
-<%= f.submit ({:confirm => "Are you sure?"}) %>
+<%= f.submit "Save Changes", ({:confirm => "Are you sure?"}) %>
 <% end %>

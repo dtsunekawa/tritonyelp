@@ -3,11 +3,11 @@ class StoresController < ApplicationController
 	before_filter :require_merchant, :only => [:new, :create, :edit, :update]
 
    	def index
-	 		if params[:search]
-	 			@stores = Store.search(params[:search])
-	 		else
-	 			@stores = Store.all
-	 		end
+	 	if params[:search]
+	 		@stores = Store.search(params[:search])
+	 	else
+	 		@stores = Store.all
+	 	end
 		
 		respond_to do |format|
 			format.html
@@ -36,6 +36,7 @@ class StoresController < ApplicationController
 	def create
 		params[:store][:user_id] = current_user.id
 		@store = Store.new(params[:store])
+		
 		respond_to do |format|
 			if @store.save
 				format.html { redirect_to @store, :notice => "#{@store.name} was successfully created." }
@@ -49,6 +50,7 @@ class StoresController < ApplicationController
 
 	def edit
 		@store = Store.find(params[:id])
+
 		if !(user_signed_in? and (current_user.stores.include?(@store) or current_user.role == 'admin'))
 			redirect_to root_path, :flash => { :error => "You must be the owner of #{@store.name} to edit it!" }
 		end
@@ -56,6 +58,11 @@ class StoresController < ApplicationController
 
 	def update
 		@store = Store.find(params[:id])
+
+		if params[:remove_image] == "1"
+			@store.image = nil
+		end
+
 		respond_to do |format|
 			if @store.update_attributes(params[:store])
 				format.html { redirect_to @store, :notice => "#{@store.name} was successfully updated." }
@@ -73,7 +80,7 @@ class StoresController < ApplicationController
 		@store.destroy
 
 		respond_to do |format|
-			format.html { redirect_to stores_path, :notice => "#{@store.name} was successfully deleted." }
+			format.html { redirect_to :back, :notice => "#{@store.name} was successfully deleted." }
 			format.json { head :no_content }
 		end
 	end
