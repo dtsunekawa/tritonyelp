@@ -1,19 +1,18 @@
-  <b><%= @store.name %></b>
-	<br />
-
+  <h2><%= @store.name %></h2>
+	
 	<% if @store.image.exists? %>
-	<center><%= image_tag @store.image.url(:banner), :class => "banner" %></center>
-	<br />
+		<center><%= image_tag @store.image.url(:banner), :class => "banner" %></center>
+		<br />
 	<% end %>
 	<%= @store.description %>
 	<br />
 	<br />
 	<!-- Begin Store Ratings Implementation -->
-		<div class="average_rating" style="<% if @store.avg_rating == 0 %>display:none;<% end %>">
-			Average rating: <div id="average_rating" style="display:inline;"><%= @store.avg_rating_str %></div>
-			<br />
-			<br />
-		</div>
+	<div class="average_rating" style="<% if @store.avg_rating == 0 %>display:none;<% end %>">
+		Average rating: <div id="average_rating" style="display:inline;"><%= @store.avg_rating_str %></div>
+		<br />
+		<br />
+	</div>
 	
 	<% form_id = "store_#{@store.id}_rating" %>
 	<% if user_signed_in? %>
@@ -36,70 +35,70 @@
 	<br />
 	<br />
 	<% if user_signed_in? and current_user.stores.include?(@store) %>
-	<%= link_to 'Edit', edit_store_path(@store) %>
+		<%= link_to 'Edit', edit_store_path(@store) %>
 	<% end %>
-	<%= link_to 'Leave a Review', new_store_review_path(@store) %>
+		<%= link_to 'Leave a Review', new_store_review_path(@store) %>
 
  
 
 	<% if !@store.reviews.empty? %>
-	<br />
-	<br />
-	<b>Customer Feedback</b>
-  	<% @store.reviews.each do |review| %>
 		<br />
 		<br />
-  		
-  		<!-- Edit link for admin -->
-  		<% if user_signed_in? and current_user.is_admin? %> 
-  			<!--<%= link_to 'Admin Edit', edit_store_review_path(@store, review) %>-->
-        	<%= link_to 'Remove Review', review, :confirm => 'Remove this Review?', :method => :delete %>
-  		<% end %> 
+		<b>Customer Feedback</b>
+  		<% @store.reviews.each do |review| %>
+			<br />
 
-		<br />
+			<br />
 
-		<b> <%= review.user.name %> </b>
+			<b> <%= review.user.name %> </b>
 
-  		<br />
+  			<br />
 
-  		<%= review.content %>
+  			<%= review.content %>
 
-  		<br /> 
-  		<% 
-			p = review.price
-			if (p == 4)
-		%>
-  			Price range: <font color = #FCC919>$$$$</font>
-  		<%	elsif (p == 3) %>
-  			Price range: <font color = #FCC919>$$$</font>
-  		<%	elsif (p == 2) %>
-  			Price range: <font color = #FCC919>$$</font>
-  		<%	else %>
-  			Price range: <font color = #FCC919>$</font>
-  		<% end %>	
-  		<br />
+  			<br /> 
 
-			<% up_count = review.uservotes.upcount(review.id) %>
+  			<% 
+				p = review.price
+				if (p == 4)
+			%>
+  				Price range: <font color = #FCC919>$$$$</font>
+  			<%	elsif (p == 3) %>
+  				Price range: <font color = #FCC919>$$$</font>
+  			<%	elsif (p == 2) %>
+  				Price range: <font color = #FCC919>$$</font>
+  			<%	else %>
+  				Price range: <font color = #FCC919>$</font>
+  			<% end %>	
+  			<br />
+  			<% up_count = review.uservotes.upcount(review.id) %>
 			<% if up_count != 0 %>
 				<span style="color: green">+<%= up_count %></span>
 				<br />
 			<% end %>
 
-      <% if user_signed_in? %>
-			<br />
-      <%= button_to "This Review Was Helpful", { :controller => 'uservotes',
+  			<% if user_signed_in? and (current_user.is_admin? or current_user.reviews.include?(review)) %> 
+  				<br />
+  				<%= link_to 'Edit', edit_store_review_path(@store, review) %> &middot;
+        		<%= link_to 'Delete', review, :confirm => 'Remove this Review?', :method => :delete %>
+        		<br />
+  			<% end %> 
+
+      		<% if user_signed_in? %>
+				<br />
+      			<%= button_to "This Review Was Helpful", { :controller => 'uservotes',
                           :action => 'upvote',
                           :pid => current_user.id,
                           :rid => review.id,
                           :sid => @store.id,
                           :method => 'create' } %>
 
-      <% end %>
-			<% if !review.tags.empty? %>
-  			<br />
-				<small><i>Tags: <% review.tags.each do |tag| %>
-  				<%= tag.name %>
-  			<% end %></i></small>
+      		<% end %>
+				<% if !review.tags.empty? %>
+  					<br />
+					<small><i>Tags: <% review.tags.each do |tag| %>
+  					<%= tag.name %>
+  				<% end %></i></small>
 			<% end %>
  		<% end %>
 	<% end %>

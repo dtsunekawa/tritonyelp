@@ -28,13 +28,12 @@ $(function() {
 		data: $('#' + form_id).serialize(),
 		success: function(response){
 			console.log(response);
+			update_stars();
 			if(response["avg_rating"]){
 					$('#average_rating').text(response["avg_rating"]);
 				}
 			}
 		})
-
-		update_stars();
 
 	});
 

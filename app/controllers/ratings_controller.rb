@@ -6,6 +6,7 @@ class RatingsController < ApplicationController
 		@rating = Rating.find(params[:id])
 		@store = Store.find(params[:rating][:store_id])
 		@rating.update_attributes(params[:rating])
+		
 		respond_to do |format|
 			if @rating.save
 				format.html { redirect_to @store }

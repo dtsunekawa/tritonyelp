@@ -91,13 +91,17 @@ body {
 
 section {
   margin-top: 1em;
-  font-size: 120%;
   padding: 20px;
   background: #fff;
 }
 
 section h1 {
   font-size: 200%;
+}
+
+section h2 {
+  margin: 5px 0 15px 0 !important;
+  line-height: 20px;
 }
 
 section h3 {
