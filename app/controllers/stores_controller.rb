@@ -80,7 +80,7 @@ class StoresController < ApplicationController
 		@store.destroy
 
 		respond_to do |format|
-			format.html { redirect_to stores_path, :notice => "#{@store.name} was successfully deleted." }
+			format.html { redirect_to :back, :notice => "#{@store.name} was successfully deleted." }
 			format.json { head :no_content }
 		end
 	end

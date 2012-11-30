@@ -14,30 +14,34 @@
 		<br />
 	</div>
 	
-	<% form_id = "store_#{@store.id}_rating" %>
-	<% if user_signed_in? %>
-		<% user_id = current_user.id %>
-	<% else %>
-		<% user_id = -1 %>
-	<% end %>
-	Your rating:
-	<%= form_for @store.ratings.find_by(user_id: user_id) || @store.ratings.new, :html => {:id => form_id, :class => "star_rating_form"} do |f| %>
-		<%= f.hidden_field :store_id, :value => @store.id %>
+	<% if !(user_signed_in? and current_user.stores.include?(@store)) %>
+		<% form_id = "store_#{@store.id}_rating" %>
 		<% if user_signed_in? %>
-			<%= f.hidden_field :user_id, :value => current_user.id %>
-		<% end %>	
-		<%= f.hidden_field :stars, :id => form_id + "_stars" %>
-	<% end %>
-	<% (1..5).each do |i| %>
-		<li class="rating_star" id="<%= form_id %>_<%= i %>" data-stars="<%= i %>" data-form-id="<%= form_id %>"></li>
+			<% user_id = current_user.id %>
+		<% else %>
+			<% user_id = -1 %>
+		<% end %>
+		Your rating:
+		<%= form_for @store.ratings.find_by(user_id: user_id) || @store.ratings.new, :html => {:id => form_id, :class => "star_rating_form"} do |f| %>
+			<%= f.hidden_field :store_id, :value => @store.id %>
+			<% if user_signed_in? %>
+				<%= f.hidden_field :user_id, :value => current_user.id %>
+			<% end %>	
+			<%= f.hidden_field :stars, :id => form_id + "_stars" %>
+		<% end %>
+		<% (1..5).each do |i| %>
+			<li class="rating_star" id="<%= form_id %>_<%= i %>" data-stars="<%= i %>" data-form-id="<%= form_id %>"></li>
+		<% end %>
+		<br />
+		<br />
 	<% end %>
 	<!-- End Store Ratings Implementation -->
-	<br />
-	<br />
+	
 	<% if user_signed_in? and current_user.stores.include?(@store) %>
 		<%= link_to 'Edit', edit_store_path(@store) %>
-	<% end %>
+	<% else %>
 		<%= link_to 'Leave a Review', new_store_review_path(@store) %>
+	<% end %>
 
  
 

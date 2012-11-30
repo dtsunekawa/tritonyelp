@@ -7,10 +7,14 @@ class ReviewsController < ApplicationController
 	end
 
 	def new
-		@votes = Uservote.all
 		@store = Store.find(params[:store_id])
 		@tags = Tag.all_unique
 		@review = Review.new
+
+		if(current_user.stores.include?(@store))
+			redirect_to @store, :flash => { :error => "You can't write a review for your own store!" }
+			return
+		end
 
 		respond_to do |format|
 			format.html

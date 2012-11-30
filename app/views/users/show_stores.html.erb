@@ -5,8 +5,11 @@
 <% @user.stores.each do | store | %>
 <tr>
   <b><td><%= store.name %></td></b>
-		<td><%= link_to 'Show', store_path(store) %></td>
-		<td><%= link_to 'Edit', edit_store_path(store) %></td>
+  	<br />
+		<td><%= link_to 'Show', store_path(store) %></td> &middot;
+		<td><%= link_to 'Edit', edit_store_path(store) %></td> &middot;
+		<td><%= link_to 'Delete', store, :method => :delete, :data => { :confirm => "Are you sure you\'d like to delete #{store.name}?" } %></td>
+	<br />
 </tr>
 <br />
 <% end %>
