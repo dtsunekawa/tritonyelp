@@ -161,12 +161,13 @@ footer nav ul {
 
 /* Search Page */
 .search_result{
+  margin-bottom: 20px;
   float:left;
   display:inline;
 }
 
 .search_result_thumb {
-  margin: 0 15px 20px 0;
+  margin: 0 15px 0 0;
   position:relative;
   float:left;
 }
