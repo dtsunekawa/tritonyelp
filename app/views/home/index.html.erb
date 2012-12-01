@@ -57,7 +57,8 @@
 		else
 		end %>
 		<td> 
-		<% 
+
+		<%	#Really DRY code here.. please refactor 
 			if (store.avg_price != nil)
 				p = store.avg_price
 				if (p <= 4 && p > 3.5)

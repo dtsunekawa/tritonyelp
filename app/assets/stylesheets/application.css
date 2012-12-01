@@ -159,6 +159,25 @@ footer nav ul {
   border-radius:         10px;
 }
 
+/* Search Page */
+.search_result{
+  display:inline;
+}
+
+.search_result_thumb {
+  margin: 0 15px 20px 0;
+  position:relative;
+  float:left;
+}
+
+.clear {
+  clear:both;
+  display:block; 
+  overflow:hidden; 
+  height:1%;
+}
+
+
 /* Errors and Notices */
 .error, .notice {
 	background: #eee;

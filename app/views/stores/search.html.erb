@@ -1,0 +1,29 @@
+<% if flash[:notice] %>
+	Search again? <%= render 'home/store_search' %>
+<% else %>
+	<h1>Showing results for <%= params[:key] %></h1>
+
+	
+
+	<% @stores.each do |store| %>
+		<div class="search_result">
+			
+			
+			<% if store.image.exists? %>
+				<div class="search_result_thumb"><%= link_to (image_tag store.image.url(:search_thumb)), store %></div>
+			<% end %>
+			<div class="search_result_title"><b><%= link_to store.name, store %></b> <i>(<%= store.avg_rating_str %> out of 5)</i></div>
+			<br />
+			<td><%= store.description.truncate(240, :omission => " ...") %></td>
+		</div>
+		<div class="clear"></div>
+		<% if store != @stores.last %>
+		<br />
+		<br />
+		<% else %>
+		<br />
+		<% end %>
+
+	<% end %>
+
+<% end %>
