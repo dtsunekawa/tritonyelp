@@ -159,14 +159,28 @@ footer nav ul {
   border-radius:         10px;
 }
 
+/* Search Bar */
+
+.search_form {
+margin: 0 auto 0 auto;
+padding: 5px;
+font-size: 18px;
+height: 22px;
+width: 90%;
+border-radius: 10px;
+}
+
 /* Search Page */
-.search_result{
+.search_result, .store {
   margin-bottom: 20px;
   float:left;
   display:inline;
 }
 
-.search_result_thumb {
+::-webkit-input-placeholder  { font-style:italic; }
+input:-moz-placeholder { font-style:italic; }
+
+.search_result_thumb, .store_thumb {
   margin: 0 15px 0 0;
   position:relative;
   float:left;

@@ -1,9 +1,7 @@
-<% if flash[:notice] %>
-	Search again? <%= render 'home/store_search' %>
-<% else %>
+
 	<h1>Showing results for <%= params[:key] %></h1>
 
-	<% @stores.each do |store| %>
+	<% @stores.each.with_index do |store, index| %>
 		<div class="search_result">
 			
 			
@@ -16,7 +14,7 @@
 		</div>
 		<div class="clear"></div>
 		
-		<% if store != @stores.last %>
+		<% if index < @stores.length - 1 %>
 		<div class="seperator"></div>
 		<br />
 		<% else %>
@@ -25,4 +23,4 @@
 
 	<% end %>
 
-<% end %>
+
