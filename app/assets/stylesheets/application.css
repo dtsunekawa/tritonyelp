@@ -161,6 +161,7 @@ footer nav ul {
 
 /* Search Page */
 .search_result{
+  float:left;
   display:inline;
 }
 
@@ -174,9 +175,12 @@ footer nav ul {
   clear:both;
   display:block; 
   overflow:hidden; 
-  height:1%;
 }
 
+.seperator{
+  border-bottom: 1px solid #eee;
+  margin-bottom: 8px;
+}
 
 /* Errors and Notices */
 .error, .notice {

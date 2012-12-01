@@ -3,8 +3,6 @@
 <% else %>
 	<h1>Showing results for <%= params[:key] %></h1>
 
-	
-
 	<% @stores.each do |store| %>
 		<div class="search_result">
 			
@@ -12,13 +10,14 @@
 			<% if store.image.exists? %>
 				<div class="search_result_thumb"><%= link_to (image_tag store.image.url(:search_thumb)), store %></div>
 			<% end %>
-			<div class="search_result_title"><b><%= link_to store.name, store %></b> <i>(<%= store.avg_rating_str %> out of 5)</i></div>
+			<div class="search_result_title"><b><%= link_to store.name, store %></b> <% if store.avg_rating != 0 %><i>(<%= store.avg_rating_str %> out of 5)</i><% end %></div>
 			<br />
 			<td><%= store.description.truncate(240, :omission => " ...") %></td>
 		</div>
 		<div class="clear"></div>
+		
 		<% if store != @stores.last %>
-		<br />
+		<div class="seperator"></div>
 		<br />
 		<% else %>
 		<br />
