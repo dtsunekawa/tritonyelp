@@ -4,7 +4,10 @@
 		<center><%= image_tag @store.image.url(:banner), :class => "banner" %></center>
 		<br />
 	<% end %>
-	<%= @store.description %> <%= (@store.display_tags 12).html_safe %>
+	<%= @store.description %> 
+	<% if !@store.tags.empty? %>
+		<div class="store_tags">Tags: <%= (@store.display_tags 12).html_safe %></div>
+	<% end %>
 	<br />
 	<br />
 	<!-- Begin Store Ratings Implementation -->

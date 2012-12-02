@@ -7,7 +7,6 @@ class Store
 	has_and_belongs_to_many :tags
   	
 
-
 	# For image uploading
 	has_mongoid_attached_file :image, :styles => { :banner => "600>", :thumb => "100x100>", :search_thumb => "290x190>" },
 	:url => "/user_images/:id/:style/:basename.:extension",
@@ -62,6 +61,8 @@ class Store
 		end
 	end
 
+	# Tag system
+
   	def add_tags value
   	    value.split(',').each do |tag|
   	    	if !(temp = self.tags.find_by(name: /(^#{Regexp.quote(tag.gsub(/\s+/, ""))}$)/i))
@@ -88,10 +89,12 @@ class Store
 
   	end
 
+  	# Necessary for search by tags functionality
   	def tag_list
     	self.tag_list = self.tags.join(',')
   	end  
 
+  	# To be called in views with .html_safe
   	def display_tags limit
   		rstring = ""
   		self.tags.sort{ |tag1, tag2| tag2.popularity <=> tag1.popularity }[0,limit].each do |tag| 

@@ -28,8 +28,8 @@ class ReviewsController < ApplicationController
 		@review.store = params[:store_id] 
 		@store = Store.find(params[:store_id])
 		@store.add_tags(@review.tag_list)
+		# Store tag list for search function
 		@store.tag_list
-
 
 		respond_to do |format|
 			if @review.save and @store.save
@@ -44,8 +44,8 @@ class ReviewsController < ApplicationController
 	def update
 		@review = Review.find(params[:id])
 		@store = @review.store
-		
-		# Tag Logic for adding and removing tags
+
+		# Logic for adding and removing tags
 		new_tags = params[:review][:tag_list].split(',')
 		tags_to_add = []
 		tags_to_remove = []
@@ -63,6 +63,7 @@ class ReviewsController < ApplicationController
 
 		@store.remove_tags(tags_to_remove.join(','))
 		@store.add_tags(tags_to_add.join(','))
+		# Store tag list for search function
 		@store.tag_list
 
 		respond_to do |format|
