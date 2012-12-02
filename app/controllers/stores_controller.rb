@@ -3,11 +3,7 @@ class StoresController < ApplicationController
 	before_filter :require_merchant, :only => [:new, :create, :edit, :update]
 
    	def index
-	 	if params[:search]
-	 		@stores = Store.search(params[:search])
-	 	else
-	 		@stores = Store.all
-	 	end
+	 	@stores = Store.all
 		
 		respond_to do |format|
 			format.html
@@ -22,6 +18,18 @@ class StoresController < ApplicationController
 			format.html
 			format.json { render :json => @store }
   		end
+	end
+
+	def search
+	 	@stores = Store.search(params[:key])
+	 	if @stores.empty?
+	 		redirect_to root_path, :notice => "No results were found for #{params[:key]}!" and return
+	 	end
+
+	 	respond_to do |format|
+			format.html
+			format.json { render :json => @stores }
+		end
 	end
 
 	def new

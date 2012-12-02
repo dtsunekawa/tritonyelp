@@ -7,7 +7,7 @@ class Store
 
 
 	# For image uploading
-	has_mongoid_attached_file :image, :styles => { :banner => "600>", :thumb => "100x100>" },
+	has_mongoid_attached_file :image, :styles => { :banner => "600>", :thumb => "100x100>", :search_thumb => "290x190>" },
 	:url => "/user_images/:id/:style/:basename.:extension",
 	:path => ":rails_root/public/user_images/:id/:style/:basename.:extension"
 
@@ -51,9 +51,9 @@ class Store
 	def avg_rating_str
 		average_rating = avg_rating
 		if(average_rating > 1)
-			(average_rating).to_s + " stars."
+			(average_rating).to_s + " stars"
 		elsif(average_rating == 1)
-			(average_rating).to_s + " star."
+			(average_rating).to_s + " star"
 		else
 			average_rating
 		end

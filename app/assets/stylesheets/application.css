@@ -159,6 +159,44 @@ footer nav ul {
   border-radius:         10px;
 }
 
+/* Search Bar */
+
+.search_form {
+margin: 0 auto 0 auto;
+padding: 5px;
+font-size: 18px;
+height: 22px;
+width: 90%;
+border-radius: 10px;
+}
+
+/* Search Page */
+.search_result, .store {
+  margin-bottom: 20px;
+  float:left;
+  display:inline;
+}
+
+::-webkit-input-placeholder  { font-style:italic; }
+input:-moz-placeholder { font-style:italic; }
+
+.search_result_thumb, .store_thumb {
+  margin: 0 15px 0 0;
+  position:relative;
+  float:left;
+}
+
+.clear {
+  clear:both;
+  display:block; 
+  overflow:hidden; 
+}
+
+.seperator{
+  border-bottom: 1px solid #eee;
+  margin-bottom: 8px;
+}
+
 /* Errors and Notices */
 .error, .notice {
 	background: #eee;

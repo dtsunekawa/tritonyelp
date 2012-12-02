@@ -1,87 +1,35 @@
-<h3>Home</h3>
 
-
-<% if signed_in? %>
-	Welcome back <%= @name %>! You are <% if @role == 'admin' %>an<% else %>a<% end %> <%= @role %>. 
-	<br />
-<% else %>
-	Welcome to Triton Yelp!
-	<br />
-<% end %>
-
-	What are you looking for? 
 <%= render 'store_search' %>
 
-<div>
+<div class="stores">
 
-<h4 align="center">Best of Yelp Stores </h4>
-<table id='stores'>
-	<thead>
-	  <tr>
-		<th> Store Name </th>
-		<th> Average Rating </th>
-		<th> Average Price </th>
-		<th> Location </th>		
-	  </tr>
-	</thead>
+	<h4 align="center">Best of Yelp Stores </h4>
 
+	<% @stores.sort_by{ |store| store.avg_rating || 0}.reverse.each.with_index do |store, index| %>
+		<div class="store">
+			
+			
+			<% if store.image.exists? %>
+				<div class="store_thumb"><%= link_to (image_tag store.image.url(:search_thumb)), store %></div>
+			<% end %>
+			<div class="store_title"><b><%= link_to store.name, store %></b> <% if store.avg_rating != 0 %><i>(<%= store.avg_rating_str %> out of 5)</i><% end %></div>
+			<br />
+			<td><%= (store.description || "").truncate(240, :omission => " ...") %></td>
+		</div>
+		<div class="clear"></div>
+		
+		<% if index < @stores.length - 1 %>
+		<div class="seperator"></div>
+		<br />
+		<% else %>
+		<br />
+		<% end %>
 
-	<% @stores.sort_by{ |store| store.avg_rating || 0}.reverse.each do |store| %>
-	<tbody>
-		<td><%= link_to store.name, store %></td>
-		<% ##Calculate avg_rating.  Wrong place?
-			sum = 0.0
-			c = 0.0
-			store.reviews.each do |review|
-				if review[:rating] != nil
-					sum += review[:rating]
-					c += 1
-				end
-			end
-			if c != 0
-				store.avg_rating = "%.2f" % (sum/c)
-			else
-			end %>
-		<td> <%= store.avg_rating %> </td>
-		<% ################################ Calculate avg_price
-		sum = 0.0
-		c = 0.0
-		store.reviews.each do |review|
-			if review[:price] != nil
-				sum += review[:price]
-				c += 1
-			end
-		end
-		if c != 0
-			store.avg_price = "%.2f" % (sum/c)
-		else
-		end %>
-		<td> 
-		<% 
-			if (store.avg_price != nil)
-				p = store.avg_price
-				if (p <= 4 && p > 3.5)
-		%>
-  				<font color = #FCC919>$$$$</font>
-  			<%	elsif (p <= 3.5 && p > 2.5) %>
-  				<font color = #FCC919>$$$</font>
-  			<%	elsif (p <= 2.5 && p > 1.5) %>
-  				<font color = #FCC919>$$</font>
-  			<%	elsif (p <= 1.5 && p > 0) %>
-  				<font color = #FCC919>$</font>
-  			<% 	else 
-  				end
-  			else 
-  			end %>	
-		</td>
-		<td> (<%= store.x_coord %>, <%= store.x_coord %>) </td>	
-	</tbody>
-<% end %>
-</table>
+	<% end %>
 
-
+<!--
 <a class="twitter-timeline"  href="https://twitter.com/UCSanDiego" data-widget-id="274166827519713280">Tweets by @UCSanDiego</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>-->
 
 </div>
 

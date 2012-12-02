@@ -15,6 +15,7 @@ resources :ratings
 resources :stores do
   resources :reviews
 end
+match '/search', to: 'stores#search', as: :stores_search
 
 match '/ratings/:id', to: 'ratings#update', using: :post
 match '/users/:id/stores', to: 'users#show_stores', as: :user_stores, using: :get
