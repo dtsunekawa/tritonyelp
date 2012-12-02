@@ -1,7 +1,7 @@
 Cse112::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  MONGOHQ_URL=mongodb://john:test123@server.mongohq.com/cs112_development
+  #MONGOHQ_URL=mongodb://john:test123@server.mongohq.com/cs112_development
   # Code is not reloaded between requests
   config.cache_classes = true
 
