@@ -10,6 +10,17 @@
 			</ul>
 		</div>
 	<% end %>
+	<% if @store.errors.any? %>
+		<div id="error_explaination">
+			<h2><%= pluralize(@store.errors.count, "error") %> prohibited this review from being saved: </h2>
+
+			<ul>
+				<% @store.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
 <%= f.label :content, 'Content (must be between 60-1000 chars):' %>
 <div class="field">
     <%= f.text_area :content, :cols => '75%', :rows=> '10%' %>
