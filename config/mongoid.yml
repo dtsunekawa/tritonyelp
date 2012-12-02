@@ -1,4 +1,11 @@
 
+  production:
+          sessions:
+           default:
+               uri: <%= ENV['MONGOHQ_URL'] %>
+           options:
+skip_version_check: true
+              safe: true
 development:
   # Configure available database sessions. (required)
   sessions:
@@ -71,15 +78,7 @@ development:
      #   options:
     #        consistency: :strong
    #         uri: <%= ENV['mongodb://<john>:<test123!@>@alex.mongohq.com:10045/app9605127'] %>
-<% if ENV['MONGOHQ_URL'] %>
-  production:
-    sessions:
-      default:
-        uri: <%= ENV['MONGOHQ_URL'] %>
-        options:
-          skip_version_check: true
-          safe: true
-<% end %>
+
 
 
 test:
