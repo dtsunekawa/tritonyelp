@@ -1,16 +1,11 @@
-#production:   
- # sessions:
-  #  default:
-      #uri: <%= ENV['MONGOHQ_URL'] %>
-     # options:
-       # skip_version_check: true
-       # safe: true
-production:
-  host: alex.mongohq.com
-  port: 10045
-  username: john
-  password: test123
-  database: cse112_development     
+production:   
+  sessions:
+    default:
+      uri: <%= ENV['MONGOHQ_URL'] %>
+      options:
+        skip_version_check: true
+        safe: true
+   
 
 development:
   # Configure available database sessions. (required)
