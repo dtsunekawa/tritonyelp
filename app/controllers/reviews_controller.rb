@@ -8,7 +8,6 @@ class ReviewsController < ApplicationController
 
 	def new
 		@store = Store.find(params[:store_id])
-		@tags = Tag.all_unique
 		@review = Review.new
 
 		if(current_user.stores.include?(@store))
@@ -23,17 +22,17 @@ class ReviewsController < ApplicationController
 	end
 
 	def create
-		tag_string = params[:tag_string] #retrieve sting of tag names and make it into an array
-		tag_list = tag_string.split(/,/)
 
 		@review = Review.new(params[:review])
 		@review.user = current_user
 		@review.store = params[:store_id] 
 		@store = Store.find(params[:store_id])
+		@store.add_tags(@review.tag_list)
+		@store.tag_list
+
 
 		respond_to do |format|
-			if @review.save
-				Tag.create_tags( tag_list, @review )
+			if @review.save and @store.save
 				format.html {redirect_to @review.store, :notice => 'Review was successfully created'}
 			else
 				format.html { render :action => 'new' }
@@ -44,9 +43,22 @@ class ReviewsController < ApplicationController
 
 	def update
 		@review = Review.find(params[:id])
+		@store = @review.store
+		#add new tags remove old tags
+		new_tags = params[:review][:tag_list].split(',')
+		tags_to_remove = []
+		@review.tags.each do |tag|
+			if !new_tags.include?(tag.name)
+				tags_to_remove << tag.name
+			end
+		end
+		@store.remove_tags(tags_to_remove.join(','))
+		@store.add_tags(params[:review][:tag_list])
+		@store.tag_list
+
 
 		respond_to do |format|
-			if @review.update_attributes(params[:review])
+			if @review.update_attributes(params[:review]) and @store.save
 				format.html { redirect_to @review.store, :notice => 'Review was successfully updated.' }
 				format.json { head :no_content }
 			else
@@ -60,6 +72,7 @@ class ReviewsController < ApplicationController
 
 	def edit
 		@review = Review.find(params[:id])
+		@store = @review.store
 
 		if(!current_user.reviews.include?(@review) and !current_user.is_admin?)
      		redirect_to root_path, :flash => { :error => 'You may only edit your own reviews!' }

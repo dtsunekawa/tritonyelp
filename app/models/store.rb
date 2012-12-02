@@ -1,9 +1,11 @@
 class Store
   include Mongoid::Document
 	include Mongoid::Paperclip
-	
+
 	has_many :reviews
 	has_many :ratings
+	has_and_belongs_to_many :tags
+  	
 
 
 	# For image uploading
@@ -18,7 +20,8 @@ class Store
 
 	belongs_to :user
 
-  field :name, :type => String
+	field :tag_list, :type => String
+  	field :name, :type => String
 	field :description, :type => String
 	field :x_coord, :type => Float
 	field :y_coord, :type => Float
@@ -27,7 +30,7 @@ class Store
 
 	def self.search(search)
 		if search
-			result = any_of({ name: /(#{Regexp.quote(search)})/i }, { description: /(#{Regexp.quote(search)})/i })
+			result = any_of({ name: /(#{Regexp.quote(search)})/i }, { description: /(#{Regexp.quote(search)})/i }, { tag_list: /(#{Regexp.quote(search)})/i } )
 		else
 			all
 		end
@@ -58,5 +61,34 @@ class Store
 			average_rating
 		end
 	end
+
+  	def add_tags value
+  	    value.split(',').each do |tag|
+  	    	if !self.tags.find_by(name: /(^#{Regexp.quote(tag.gsub(/\s+/, ""))}$)/i)
+				self.tags.build(name: tag.gsub(/\s+/, "")).save
+			end
+    	end
+
+  	end
+
+  	def remove_tags value
+  		 value.split(',').each do |tag|
+      		self.tags.where(name: /(^#{Regexp.quote(tag.gsub(/\s+/, ""))}$)/i).destroy
+    	end
+
+  	end
+
+  	def tag_list
+    	self.tag_list = self.tags.join(',')
+  	end  
+
+  	def display_tags limit
+  		return_val = ""
+  		self.tags[0, limit].each.with_index do |tag, i|
+  			return_val += "\##{tag.to_str}"
+  			return_val += " " unless i == self.tags.length - 1 or i == limit - 1
+  		end
+  		return_val
+  	end
 
 end

@@ -14,7 +14,18 @@
 			<% end %>
 			<div class="store_title"><b><%= link_to store.name, store %></b> <% if store.avg_rating != 0 %><i>(<%= store.avg_rating_str %> out of 5)</i><% end %></div>
 			<br />
-			<td><%= (store.description || "").truncate(240, :omission => " ...") %></td>
+			<%= (store.description || "").truncate(240, :omission => " ...") %>
+			<br />
+			<% if !store.tags.empty? %>
+				<div class="store_tags">Tags: 
+					<% store.tags[0, 3].each.with_index do |tag, i| %>
+  						<%= link_to "\##{tag.to_str}", "/search?utf8=%E2%9C%93&key=#{tag.to_str}" %>
+  					<% end %>
+				</div>
+
+			<% end %>
+
+
 		</div>
 		<div class="clear"></div>
 		

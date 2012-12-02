@@ -4,7 +4,7 @@
 		<center><%= image_tag @store.image.url(:banner), :class => "banner" %></center>
 		<br />
 	<% end %>
-	<%= @store.description %>
+	<%= @store.description %> <%= @store.display_tags 20 %>
 	<br />
 	<br />
 	<!-- Begin Store Ratings Implementation -->

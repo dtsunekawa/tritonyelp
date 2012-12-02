@@ -10,7 +10,7 @@
 			<% end %>
 			<div class="search_result_title"><b><%= link_to store.name, store %></b> <% if store.avg_rating != 0 %><i>(<%= store.avg_rating_str %> out of 5)</i><% end %></div>
 			<br />
-			<td><%= store.description.truncate(240, :omission => " ...") %></td>
+			<td><%= (store.description || "").truncate(240, :omission => " ...") %></td>
 		</div>
 		<div class="clear"></div>
 		

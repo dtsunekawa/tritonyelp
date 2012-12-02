@@ -23,7 +23,7 @@ class StoresController < ApplicationController
 	def search
 	 	@stores = Store.search(params[:key])
 	 	if @stores.empty?
-	 		redirect_to root_path, :notice => "No results were found for #{params[:key]}!" and return
+	 		redirect_to root_path, :notice => "No results were found for '#{params[:key]}'." and return
 	 	end
 
 	 	respond_to do |format|
