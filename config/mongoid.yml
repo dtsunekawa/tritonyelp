@@ -14,30 +14,30 @@ skip_version_check: true
            options:
 skip_version_check: true
               safe: true
-development:
-  # Configure available database sessions. (required)
-  sessions:
-    # Defines the default session. (required)
-    default:
-      # Defines the name of the default database that Mongoid can connect to.
-      # (required).
-      database: cse112_development
-      # Provides the hosts the default session can connect to. Must be an array
-      # of host:port pairs. (required)
-      hosts:
-        - localhost:27017
-      options:
-        # Change whether the session persists in safe mode by default.
-        # (default: false)
-        # safe: false
+#development:
+           # Configure available database sessions. (required)
+  #sessions:
+         # Defines the default session. (required)
+   # default:
+         # Defines the name of the default database that Mongoid can connect to.
+          # (required).
+     # database: cse112_development
+             # Provides the hosts the default session can connect to. Must be an array
+             # of host:port pairs. (required)
+    #  hosts:
+      #  - localhost:27017
+    #  options:
+               # Change whether the session persists in safe mode by default.
+                 # (default: false)
+                 # safe: false
 
-        # Change the default consistency model to :eventual or :strong.
-        # :eventual will send reads to secondaries, :strong sends everything
-        # to master. (default: :eventual)
-        consistency: :strong
-  # Configure Mongoid specific options. (optional)
-  options:
-    raise_not_found_error: false
+              # Change the default consistency model to :eventual or :strong.
+                # :eventual will send reads to secondaries, :strong sends everything
+            # to master. (default: :eventual)
+       # consistency: :strong
+               # Configure Mongoid specific options. (optional)
+  #options:
+    #raise_not_found_error: false
     # Configuration for whether or not to allow access to fields that do
     # not have a field definition on the model. (default: true)
     # allow_dynamic_fields: true
