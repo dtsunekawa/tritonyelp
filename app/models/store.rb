@@ -64,8 +64,11 @@ class Store
 
   	def add_tags value
   	    value.split(',').each do |tag|
-  	    	if !self.tags.find_by(name: /(^#{Regexp.quote(tag.gsub(/\s+/, ""))}$)/i)
+  	    	if !(temp = self.tags.find_by(name: /(^#{Regexp.quote(tag.gsub(/\s+/, ""))}$)/i))
 				self.tags.build(name: tag.gsub(/\s+/, "")).save
+			else
+				temp.popularity += 1
+				temp.save	
 			end
     	end
 
@@ -73,7 +76,14 @@ class Store
 
   	def remove_tags value
   		 value.split(',').each do |tag|
-      		self.tags.where(name: /(^#{Regexp.quote(tag.gsub(/\s+/, ""))}$)/i).destroy
+      		if (temp = self.tags.find_by(name: /(^#{Regexp.quote(tag.gsub(/\s+/, ""))}$)/i))
+      			if temp.popularity < 1
+      				temp.destroy
+      			else
+      				temp.popularity -= 1
+      				temp.save
+      			end
+      		end
     	end
 
   	end
@@ -83,12 +93,11 @@ class Store
   	end  
 
   	def display_tags limit
-  		return_val = ""
-  		self.tags[0, limit].each.with_index do |tag, i|
-  			return_val += "\##{tag.to_str}"
-  			return_val += " " unless i == self.tags.length - 1 or i == limit - 1
+  		rstring = ""
+  		self.tags.sort{ |tag1, tag2| tag2.popularity <=> tag1.popularity }[0,limit].each do |tag| 
+  			rstring += "<a href=\"/search?utf8=%E2%9C%93&key=#{tag.to_str}\">\##{tag.to_str}</a> "
   		end
-  		return_val
+  		rstring
   	end
 
 end

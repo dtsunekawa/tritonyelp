@@ -44,18 +44,26 @@ class ReviewsController < ApplicationController
 	def update
 		@review = Review.find(params[:id])
 		@store = @review.store
-		#add new tags remove old tags
+		
+		# Tag Logic for adding and removing tags
 		new_tags = params[:review][:tag_list].split(',')
+		tags_to_add = []
 		tags_to_remove = []
 		@review.tags.each do |tag|
-			if !new_tags.include?(tag.name)
+			if new_tags.grep(/(^#{Regexp.quote(tag.name)}$)/i).empty?
 				tags_to_remove << tag.name
 			end
 		end
-		@store.remove_tags(tags_to_remove.join(','))
-		@store.add_tags(params[:review][:tag_list])
-		@store.tag_list
 
+		new_tags.each do |tag_name|
+			if @review.tags.grep(/(^#{Regexp.quote(tag_name.gsub(/\s+/, ""))}$)/i).empty?
+				tags_to_add << tag_name
+			end
+		end
+
+		@store.remove_tags(tags_to_remove.join(','))
+		@store.add_tags(tags_to_add.join(','))
+		@store.tag_list
 
 		respond_to do |format|
 			if @review.update_attributes(params[:review]) and @store.save
