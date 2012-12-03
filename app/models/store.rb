@@ -4,7 +4,7 @@ class Store
 
 	has_many :reviews
 	has_many :ratings
-	has_and_belongs_to_many :tags
+	has_many :tags
   	
 
 	# For image uploading
