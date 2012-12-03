@@ -253,11 +253,7 @@ table#stores th, table#stores td {
 	border-radius: 10px;
 }
 
-#left, #right { 
-  width: 45%; 
-  margin:5px; 
-  padding: 1em; 
-  background: white; 
+#right { 
+  float:right; 
+  margin: 0 0 15px 20px;
 } 
-#left  { float:left;  }
-#right { float:right; } 
