@@ -24,8 +24,8 @@ class Store
 	field :description, :type => String
 	field :x_coord, :type => Float
 	field :y_coord, :type => Float
-	field :avg_rating, :type => Float
-	field :avg_price, :type => Float
+	field :avg_rating, :type => Float, :default => 0.0
+	field :avg_price, :type => Float, :default => 0.0
 
 	def self.search(search)
 		if search
