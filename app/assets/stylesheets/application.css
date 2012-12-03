@@ -172,6 +172,7 @@ border-radius: 10px;
 
 /* Search Page */
 .search_result, .store {
+  min-height: 120px;
   width: 100%;
   position: relative;
   margin-bottom: 20px;
