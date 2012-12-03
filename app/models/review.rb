@@ -1,7 +1,7 @@
 class Review
   include Mongoid::Document
 
-  has_many :tags
+  has_and_belongs_to_many :tags
   attr_accessor :tag_list
 
   ##Content
