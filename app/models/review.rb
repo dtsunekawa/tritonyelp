@@ -1,6 +1,9 @@
 class Review
   include Mongoid::Document
 
+  has_and_belongs_to_many :tags
+  attr_accessor :tag_list
+
   ##Content
   field :content,		:type => String
   field :price, :type => Integer
@@ -11,9 +14,18 @@ class Review
 
   belongs_to :user
   belongs_to :store
-  has_many :tags, :dependent => :destroy
-  accepts_nested_attributes_for :tags
   has_many :uservotes, :dependent => :destroy
+
+  def tag_list=value
+    self.tags = nil
+    value.split(',').each do |tag|
+      self.tags.build(:name => tag).save
+    end
+  end
+
+  def tag_list
+    self.tags.join(',')
+  end  
 
   # This throws an error when creating a Review
   #references_many :tags

@@ -1,10 +1,11 @@
 class Store
   include Mongoid::Document
 	include Mongoid::Paperclip
-	
+
 	has_many :reviews
 	has_many :ratings
-
+	has_and_belongs_to_many :tags
+  	
 
 	# For image uploading
 	has_mongoid_attached_file :image, :styles => { :banner => "600>", :thumb => "100x100>", :search_thumb => "290x190>" },
@@ -18,7 +19,8 @@ class Store
 
 	belongs_to :user
 
-  field :name, :type => String
+	field :tag_list, :type => String
+  	field :name, :type => String
 	field :description, :type => String
 	field :x_coord, :type => Float
 	field :y_coord, :type => Float
@@ -27,7 +29,7 @@ class Store
 
 	def self.search(search)
 		if search
-			result = any_of({ name: /(#{Regexp.quote(search)})/i }, { description: /(#{Regexp.quote(search)})/i })
+			result = any_of({ name: /(#{Regexp.quote(search)})/i }, { description: /(#{Regexp.quote(search)})/i }, { tag_list: /(#{Regexp.quote(search)})/i } )
 		else
 			all
 		end
@@ -58,5 +60,47 @@ class Store
 			average_rating
 		end
 	end
+
+	# Tag system
+
+  	def add_tags value
+  	    value.split(',').each do |tag|
+  	    	if !(temp = self.tags.find_by(name: /(^#{Regexp.quote(tag.gsub(/\s+/, ""))}$)/i))
+				self.tags.build(name: tag.gsub(/\s+/, "")).save
+			else
+				temp.popularity += 1
+				temp.save	
+			end
+    	end
+
+  	end
+
+  	def remove_tags value
+  		 value.split(',').each do |tag|
+      		if (temp = self.tags.find_by(name: /(^#{Regexp.quote(tag.gsub(/\s+/, ""))}$)/i))
+      			if temp.popularity < 1
+      				temp.destroy
+      			else
+      				temp.popularity -= 1
+      				temp.save
+      			end
+      		end
+    	end
+
+  	end
+
+  	# Necessary for search by tags functionality
+  	def tag_list
+    	self.tag_list = self.tags.join(',')
+  	end  
+
+  	# To be called in views with .html_safe
+  	def display_tags limit
+  		rstring = ""
+  		self.tags.sort{ |tag1, tag2| tag2.popularity <=> tag1.popularity }[0,limit].each do |tag| 
+  			rstring += "<a href=\"/search?utf8=%E2%9C%93&key=#{tag.to_str}\">\##{tag.to_str}</a> "
+  		end
+  		rstring
+  	end
 
 end

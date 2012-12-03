@@ -10,62 +10,33 @@
 			</ul>
 		</div>
 	<% end %>
+	<% if @store.errors.any? %>
+		<div id="error_explaination">
+			<h2><%= pluralize(@store.errors.count, "error") %> prohibited this review from being saved: </h2>
+
+			<ul>
+				<% @store.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
 <%= f.label :content, 'Content (must be between 60-1000 chars):' %>
 <div class="field">
     <%= f.text_area :content, :cols => '75%', :rows=> '10%' %>
 </div>
 <br />
 <div class="field">
-    Money Spent? <%= f.select :price, [[1,1],[2,2],[3,3],[4,4]]%> (1=cheap, 4=expensive)
+    How expensive would you rate <%= @store.name %>? 
+    <br />
+    <%= f.select :price, [[1,1],[2,2],[3,3],[4,4]]%> (1=cheap, 4=expensive)
 </div>
 <br />
-
-<input type="hidden" id="tag_string" name ="tag_string" />
-
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
-    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-    <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="/resources/demos/style.css" />
- 
-    <style>
-    #feedback { font-size: 1.4em; }
-    #selectable .ui-selecting { background: #FECA40; }
-    #selectable .ui-selected { background: #F39814; color: white; }
-    #selectable { list-style-type: none; margin: 0; padding: 0; width: 35%; }
-    #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
-    </style>
-    <script>
-
-    $(function() {
-        $( "#selectable" ).selectable({
-            stop: function() {
-                var result = $( "#select-result" ).empty();
-                var tag_names = []
-                $( ".ui-selected", this ).each(function() {
-                    var item = this.innerHTML;
-                    result.append( ( item ) );
-                    tag_names.push( item );
-                    $("#tag_string").val( tag_names );
-                });
-            }
-        });
-    });
-    </script>
-</head>
-<body>
-
-<ol id="selectable">
-    <% if @tags.present? %>
-        <%@tags.each_key do |tag| %>
-    	   <li class="ui-widget-content"> <%=tag%> </li>
-        <%end%>
-    <% end %>
-</ol>
- 
-<p id="feedback">
-<span>Selected Tags:</span> <span id="select-result">none</span>
-</p>
+<%= f.label :tag_list %>
+<br />
+<%= f.text_field :tag_list %>
+<br />
+<br />
 
 <div class="actions">
 	<%= f.submit %>

@@ -205,6 +205,12 @@ input:-moz-placeholder { font-style:italic; }
 
 .error { color: red }
 
+.store_tags{
+  margin: 20px 0 0 0;
+  position: relative;
+  color: gray;
+  font-size: 12px;
+}
 
 table#stores {
   margin: 10px;

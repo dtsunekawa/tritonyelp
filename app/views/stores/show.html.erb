@@ -4,7 +4,10 @@
 		<center><%= image_tag @store.image.url(:banner), :class => "banner" %></center>
 		<br />
 	<% end %>
-	<%= @store.description %>
+	<%= @store.description %> 
+	<% if !@store.tags.empty? %>
+		<div class="store_tags">Tags: <%= (@store.display_tags 12).html_safe %></div>
+	<% end %>
 	<br />
 	<br />
 	<!-- Begin Store Ratings Implementation -->
@@ -22,7 +25,7 @@
 			<% user_id = -1 %>
 		<% end %>
 		Your rating:
-		<%= form_for @store.ratings.find_by(user_id: user_id) || @store.ratings.new, :html => {:id => form_id, :class => "star_rating_form"} do |f| %>
+		<%= form_for @store.ratings.find_or_create_by(user_id: user_id) || @store.ratings.new, :html => {:id => form_id, :class => "star_rating_form"} do |f| %>
 			<%= f.hidden_field :store_id, :value => @store.id %>
 			<% if user_signed_in? %>
 				<%= f.hidden_field :user_id, :value => current_user.id %>
