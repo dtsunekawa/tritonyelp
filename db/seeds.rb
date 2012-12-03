@@ -102,9 +102,15 @@ puts 'Customer ' << ingolf_k.name << ' ' << ingolf_k.lname << ' created.'
 jack_b = User.create(name: 'Jack', lname: 'Bauer', email: 'jack@customer.com', role: 'customer', password: 'password')
 puts 'Customer ' << jack_b.name << ' ' << jack_b.lname << ' created.'
 
+
+
+
+
+
+
 puts 'Creating stores...'
 
-cups_store = Store.create! :name => 'Cups Coffee Cart', :avg_rating => 9.5, :avg_price => 3.34, :x_coord => 48.89, :y_coord => 67.93, 
+cups_store = Store.create! :name => 'Cups Coffee Cart', :avg_rating => 3.5, :avg_price => 3, :x_coord => 48.89, :y_coord => 67.93, 
 	:description => "Cups Coffee Cart has an assortment of excellent coffee beverages including are campus-famous Granite Bear Special. \
 	We also have homemade sandwiches that that will entice the vegetarians and carnivores alike.\
 	Come to Cups Coffe Cart today! We are conveniently located between Atkinson Hall and the Computer Science and Engineering (EBU3) building."
@@ -114,7 +120,11 @@ cups_merchant.stores << cups_store
 cups_merchant.save!
 puts cups_store.name << ' created.'
 
-goodys_store = Store.create! :name => 'Goody\'s Place and Market', :avg_rating => 8.7, :avg_price => 6.55, :x_coord => 48.89, :y_coord => 67.93, 
+cups_store_rating_1 = Rating.create! :stars => 3, :store => cups_store, :user => jack_b
+
+
+
+goodys_store = Store.create! :name => 'Goody\'s Place and Market', :avg_rating => 4.5, :avg_price => 3, :x_coord => 48.89, :y_coord => 67.93, 
 	:description => "Best known for authentic South-of-the-Border style food, like big burritos, Baja salad bowls, and other Mexican entrees. \
 	Not in the mood for Latin food? The deli features a distinct variety of fresh artisan sandwiches and refreshing sides, as well as an \
 	outdoor walk-up window for coffee drinks. Location: Thurgood Marshall Activity Center"
@@ -124,7 +134,10 @@ goodys_merchant.stores << goodys_store
 goodys_merchant.save!
 puts goodys_store.name << ' created.'
 
-panda_store = Store.create! :name => 'Panda Express', :avg_rating => 6.5, :avg_price => 3.66, :x_coord => 48.89, :y_coord => 67.93, 
+cups_store_rating_2 = Rating.create! :stars => 4, :store => goodys_store, :user => tuan_b
+
+
+panda_store = Store.create! :name => 'Panda Express', :avg_rating => 2.5, :avg_price => 3, :x_coord => 48.89, :y_coord => 67.93, 
 :description => "Panda Express brings you the Chinese food made from scratch using the best ingredients nature has to offer.\ 
 All of our food is MSG free hand made with your health in mind! Come visit us, we are located on the first floor of Price Center!"
 panda_store.user = panda_merchant._id
@@ -133,7 +146,11 @@ panda_merchant.stores << panda_store
 panda_merchant.save!
 puts panda_store.name << ' created.'
 
-bk_store = Store.create! :name => 'Burger King', :avg_rating => 5.5, :avg_price => 1.60, :x_coord => 48.89, :y_coord => 67.93, 
+cups_store_rating_3 = Rating.create! :stars => 2, :store => panda_store, :user => matt_n
+
+
+
+bk_store = Store.create! :name => 'Burger King', :avg_rating => 2.5, :avg_price => 2, :x_coord => 48.89, :y_coord => 67.93, 
 :description => "Every day, more than 11 million guests visit BURGER KING restaurants around the world. And they do so because \
 our restaurants are known for serving high-quality, great-tasting, and affordable food. Founded in 1954, BURGER KING is the \
 second largest fast food hamburger chain in the world. The original HOME OF THE WHOPPER, our commitment to premium ingredients, \
@@ -145,7 +162,10 @@ bk_merchant.stores << bk_store
 bk_merchant.save!
 puts bk_store.name << ' created.'
 
-subway_store = Store.create! :name => 'Subway', :avg_rating => 8.5, :avg_price => 0.05, :x_coord => 48.89, :y_coord => 67.93, 
+cups_store_rating_4 = Rating.create! :stars => 3, :store => bk_store, :user => jack_b
+
+
+subway_store = Store.create! :name => 'Subway', :avg_rating => 3, :avg_price => 2, :x_coord => 48.89, :y_coord => 67.93, 
 :description => "The SUBWAY brand is the world's largest submarine sandwich chain with more than 37,000 locations around the world. \
 We've become the leading choice for people seeking quick, nutritious meals that the whole family can enjoy. \
 We're located in Price Center at UCSD, come on by!"
@@ -155,7 +175,10 @@ subway_merchant.stores << subway_store
 subway_merchant.save!
 puts subway_store.name << ' created.'
 
-bombay_store = Store.create! :name => 'Bombay Coast', :avg_rating => 6.5, :avg_price => 3.70, :x_coord => 48.89, :y_coord => 67.93, 
+cups_store_rating_5 = Rating.create! :stars => 3, :store => subway_store, :user => ingolf_k
+
+
+bombay_store = Store.create! :name => 'Bombay Coast', :avg_rating => 1, :avg_price => 3, :x_coord => 48.89, :y_coord => 67.93, 
 :description => "If you're looking for Indian food at UCSD, consider Bombay Coast Indian food restaurant. At Bombay Coast, we bring \
 you the same wonderful experiences and taste we grew up eating in India. From our exceptional service to the authentic aromas of our \
 delicious Indian cuisine to our flavorful and homemade recipes - Bombay Coast brings to you an experience you won't forget. Come visit us \
@@ -166,7 +189,9 @@ bombay_merchant.stores << bombay_store
 bombay_merchant.save!
 puts bombay_store.name << ' created.'
 
-sunshine_store = Store.create! :name => 'Sunshine Market', :avg_rating => 9.5, :avg_price => 3.00, :x_coord => 48.89, :y_coord => 67.93, 
+cups_store_rating_6 = Rating.create! :stars => 2, :store => bombay_store, :user => nico_p
+
+sunshine_store = Store.create! :name => 'Sunshine Market', :avg_rating => 5, :avg_price => 3, :x_coord => 48.89, :y_coord => 67.93, 
 :description => "Sunshine Market is your one stop shop for all your grocery needs at UCSD. Come try our delicious soups and hand made Zanzibar \
 sandwiches. We are located on the first floor of Price Center."
 sunshine_store.user = sunshine_merchant._id
@@ -174,6 +199,37 @@ sunshine_store.save!
 sunshine_merchant.stores << sunshine_store
 sunshine_merchant.save!
 puts sunshine_store.name << ' created.'
+
+cups_store_rating_7 = Rating.create! :stars => 5, :store => sunshine_store, :user => dan_t
+
+
+# TritonYelp example of twitter feed
+u_merchant5 = User.create! :name => 'TritonYelp', :lname => 'Merchant', :role => 'merchant', :email => 'tritonyelp@tritonyelp.com', :password => 'please', :password_confirmation => 'please'
+puts 'New user created: ' << u_merchant5.name
+
+s_tritonyelp = Store.create! :name => 'TritonYelp', :avg_rating => 5, :avg_price => 0, :x_coord => 48.89, :y_coord => 67.93, :twitter_user_name => "https://twitter.com/TritonYelp", :twitter_widget_id => "275482677962997760",
+	:description => "Class cse 112 TritonYelp project.  Yelp app just for UCSD student searching for anything UCSD.  Student can search and rate their favorite places."
+s_tritonyelp.user = u_merchant5._id
+s_tritonyelp.save!
+puts 'New store created: ' << s_tritonyelp.name
+
+puts 'Creating reviews for Subway...'
+
+triton_review_1 = Review.create! :content => 'Great App very nice and easy to use.  Definitely recommending to friends and family.', 
+:user => dan_t, :store => s_tritonyelp 
+
+triton_review_2 = Review.create! :content => 'Look good, fast and userfriendly.  Really like the ranking feature of rating.', 
+:user => josh_g, :store => s_tritonyelp 
+
+s_tritonyelp.reviews << triton_review_1 << triton_review_2
+
+sandwich = Tag.create! :name => 'Yelp', 
+:reviews => [triton_review_1, triton_review_2],
+:stores => [s_tritonyelp]
+
+cups_store_rating_10 = Rating.create! :stars => 5, :store => s_tritonyelp, :user => cam_j
+
+
 
 # seeding reviews
 puts 'Creating reviews...'
@@ -401,3 +457,7 @@ free = Tag.create! :name => 'free',
 convenient = Tag.create! :name => 'convenient', 
 :reviews => [sunshine_review_4], 
 :stores => [sunshine_store]
+
+
+
+

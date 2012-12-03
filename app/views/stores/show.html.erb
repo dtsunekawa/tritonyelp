@@ -18,7 +18,7 @@
 <% if @store.twitter_widget_id? %>
 
 	<div id="left">
-		<a class="twitter-timeline" width="350" height="350" href=<%= @store.twitter_user_name %> data-widget-id=<%= @store.twitter_widget_id %>></a>
+		<a class="twitter-timeline" width="350" height="100" href=<%= @store.twitter_user_name %> data-widget-id=<%= @store.twitter_widget_id %>></a>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   	</div>
 
