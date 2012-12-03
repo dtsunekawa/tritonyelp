@@ -5,7 +5,8 @@
 
 	<h4 align="center">Best of Yelp Stores </h4>
 
-	<% @stores.sort_by{ |store| store.avg_rating || 0}.reverse.each.with_index do |store, index| %>
+	<% @stores.sort_by{ |store| store.avg_rating || 0 }.reverse.each.with_index do |store, index| %>
+
 		<div class="store">
 			
 			
