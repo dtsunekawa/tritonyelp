@@ -251,3 +251,20 @@ table#stores th, table#stores td {
 	border: 1px solid #EEE;
 	border-radius: 10px;
 }
+
+
+#content { 
+  overflow:auto;
+  margin: auto; 
+  width: 800px; 
+} 
+
+
+#left, #right { 
+  width: 45%; 
+  margin:5px; 
+  padding: 1em; 
+  background: white; 
+} 
+#left  { float:left;  }
+#right { float:right; } 

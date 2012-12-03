@@ -26,6 +26,8 @@ class Store
 	field :y_coord, :type => Float
 	field :avg_rating, :type => Float, :default => 0.0
 	field :avg_price, :type => Float, :default => 0.0
+	field :twitter_user_name, :type => String
+	field :twitter_widget_id, :type => String
 
 	def self.search(search)
 		if search

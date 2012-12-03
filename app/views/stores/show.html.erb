@@ -7,13 +7,46 @@
 <% end %>
 
 <div class="store_content">
-  <h2><%= @store.name %></h2>
+  <h2 align="center"><%= @store.name %></h2>
 	
 	<% if @store.image.exists? %>
 		<center><%= image_tag @store.image.url(:banner), :class => "banner" %></center>
 		<br />
 	<% end %>
+
+
+
+
+
+
+
+
+<% if @store.twitter_widget_id? %>
+<div id="content">
+
+  <div id="left">
+<a class="twitter-timeline" width="350" height="350" href=<%= @store.twitter_user_name %> data-widget-id=<%= @store.twitter_widget_id %>></a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </div>
+
+  <div id="right">
+  	<%= @store.description %> 
+  </div>
+
+</div>
+
+<% else %>
 	<%= @store.description %> 
+<% end %>
+
+
+
+
+
+
+
+
+
 	<% if !@store.tags.empty? %>
 		<div class="store_tags">Tags: <%= (@store.display_tags 12).html_safe %></div>
 	<% end %>

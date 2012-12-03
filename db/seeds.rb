@@ -75,6 +75,17 @@ puts 'Customer ' << ingolf_k.name << ' ' << ingolf_k.lname << ' created.'
 jack_b = User.create(name: 'Jack', lname: 'Bauer', email: 'jack@customer.com', role: 'customer', password: 'password')
 puts 'Customer ' << jack_b.name << ' ' << jack_b.lname << ' created.'
 
+
+u_merchant5 = User.create! :name => 'TritonYelp', :lname => 'Merchant', :role => 'merchant', :email => 'tritonyelp@tritonyelp.com', :password => 'please', :password_confirmation => 'please'
+puts 'New user created: ' << u_merchant5.name
+
+s_tritonyelp = Store.create! :name => 'TritonYelp', :avg_rating => 5, :avg_price => 3.34, :x_coord => 48.89, :y_coord => 67.93, :twitter_user_name => "https://twitter.com/TritonYelp", :twitter_widget_id => "275482677962997760",
+	:description => "Class cse 112 TritonYelp project.  Yelp app just for UCSD student searching for anything UCSD.  Student can search and rate their favorite places."
+s_tritonyelp.user = u_merchant5._id
+s_tritonyelp.save!
+puts 'New store created: ' << s_tritonyelp.name
+
+
 puts 'creating stores...'
 
 cups_store = Store.create! :name => 'Cups Coffee Cart', :avg_rating => 9.5, :avg_price => 3.34, :x_coord => 48.89, :y_coord => 67.93, 
@@ -133,6 +144,7 @@ sandwiches. We are located on the first floor of Price Center."
 sunshine_store.user = sunshine_merchant._id
 sunshine_store.save!
 puts sunshine_store.name << ' created.'
+
 
 # seeding reviews
 puts 'Creating reviews...'
@@ -240,64 +252,3 @@ sunshine_review_4 = Review.create! :content => 'One of the few markets so the pr
 
 
 # seeding tags
-
-puts 'Creating tags for Cups reviews'
-Tag.create! :name => '#Sandwich', :review => cups_review_1.id
-Tag.create! :name => '#Breakfast', :review => cups_review_2.id
-Tag.create! :name => '#Lunch', :review => cups_review_2.id
-Tag.create! :name => '#Pizza', :review => cups_review_2.id
-Tag.create! :name => '#Burrito', :review => cups_review_2.id
-Tag.create! :name => '#Bagel', :review => cups_review_3.id
-Tag.create! :name => '#Coffee', :review => cups_review_4.id
-Tag.create! :name => '#Sandwich', :review => cups_review_4.id
-
-puts 'Creating tags for Goodys reviews'
-Tag.create! :name => '#Burrito', :review => goodys_review_1.id
-Tag.create! :name => '#Sandwich', :review => goodys_review_2.id
-Tag.create! :name => '#Healthy', :review => goodys_review_2.id
-Tag.create! :name => '#Expensive', :review => goodys_review_3.id
-Tag.create! :name => '#Healthy', :review => goodys_review_3.id
-Tag.create! :name => '#South-of-the-Border', :review => goodys_review_3.id
-Tag.create! :name => '#Water-refill', :review => goodys_review_4.id
-Tag.create! :name => '#Healthy', :review => goodys_review_4.id
-
-Tag.create! :name => '#Chicken', :review => panda_review_1.id
-Tag.create! :name => '#Asian', :review => panda_review_2.id
-Tag.create! :name => '#Chicken', :review => panda_review_2.id
-Tag.create! :name => '#Gross', :review => panda_review_3.id
-Tag.create! :name => '#Gross', :review => panda_review_4.id
-Tag.create! :name => '#Straight-to-the-bathroom', :review => panda_review_4.id
-
-Tag.create! :name => '#Burger', :review => bk_review_1.id
-Tag.create! :name => '#American', :review => bk_review_1.id
-Tag.create! :name => '#Gross', :review => bk_review_2.id
-Tag.create! :name => '#Expensive', :review => bk_review_3.id
-Tag.create! :name => '#Inexpensive', :review => bk_review_3.id
-Tag.create! :name => '#Chicken', :review => bk_review_3.id
-Tag.create! :name => '#Fries', :review => bk_review_3.id
-Tag.create! :name => '#Awesome', :review => bk_review_4.id
-
-Tag.create! :name => '#Sandwich', :review => subway_review_1.id
-Tag.create! :name => '#Stingy', :review => subway_review_1.id
-Tag.create! :name => '#Sandwich', :review => subway_review_2.id
-Tag.create! :name => '#Inexpensive', :review => subway_review_2.id
-Tag.create! :name => '#Gross', :review => subway_review_3.id
-Tag.create! :name => '#Stingy', :review => subway_review_4.id
-Tag.create! :name => '#Small servings', :review => subway_review_4.id
-
-Tag.create! :name => '#Indian', :review => bombay_review_1.id
-Tag.create! :name => '#Gross', :review => bombay_review_2.id
-Tag.create! :name => '#Indian', :review => bombay_review_2.id
-Tag.create! :name => '#Gross', :review => bombay_review_3.id
-Tag.create! :name => '#Expensive', :review => bombay_review_3.id
-Tag.create! :name => '#Indian', :review => bombay_review_4.id
-
-Tag.create! :name => '#Drinks', :review => sunshine_review_1.id
-Tag.create! :name => '#Groceries', :review => sunshine_review_1.id
-Tag.create! :name => '#Soup', :review => sunshine_review_1.id
-Tag.create! :name => '#Snacks', :review => sunshine_review_1.id
-Tag.create! :name => '#Free', :review => sunshine_review_2.id
-Tag.create! :name => '#Expensive', :review => sunshine_review_3.id
-Tag.create! :name => '#Inexpensive', :review => sunshine_review_3.id
-Tag.create! :name => '#Expensive', :review => sunshine_review_4.id
-Tag.create! :name => '#Convenient', :review => sunshine_review_4.id
