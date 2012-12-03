@@ -6,6 +6,7 @@
     <meta property="og:description" content="<%= @store.description.truncate 140, :omission => "..." %>" />
 <% end %>
 
+<div class="store_content">
   <h2><%= @store.name %></h2>
 	
 	<% if @store.image.exists? %>
@@ -16,8 +17,17 @@
 	<% if !@store.tags.empty? %>
 		<div class="store_tags">Tags: <%= (@store.display_tags 12).html_safe %></div>
 	<% end %>
+	<!-- Begin Share Div -->
+			<div class="sharing">
+				<div class="fb-like share_icon" data-href="<%= store_url(@store) %>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+				<a href="http://www.reddit.com/submit?url=<%= store_url(@store) %>"><img class="share_icon" src="http://www.reddit.com/static/spreddit7.gif" alt="submit to reddit" border="0" /></a>
+				<a id="share_icon" href="http://twitter.com/share" data-url="<%= store_url(@store) %>" 
+				<% if !@store.description.nil? %>data-text="<%= @store.description.truncate(120, :omission => "...") %><% end %>" class="twitter-share-button" data-hashtags="TritonYelp"data-lang="en">Tweet</a>
+			</div>
+	<!-- End Share Div -->
 	<br />
 	<br />
+</div>
 	<!-- Begin Store Ratings Implementation -->
 	<div class="average_rating" style="<% if @store.avg_rating == 0 %>display:none;<% end %>">
 		Average rating: <div id="average_rating" style="display:inline;"><%= @store.avg_rating_str %>.</div>

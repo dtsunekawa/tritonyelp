@@ -207,6 +207,10 @@ input:-moz-placeholder { font-style:italic; }
   display:none;
 }
 
+.store_content{
+  position:relative;
+}
+
 .share_icon, #share_icon {
   margin-right: 24px !important;
 }
