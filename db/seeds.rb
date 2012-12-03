@@ -11,9 +11,9 @@
 ###########################
 # How to seed database
 # run these commands
-# bundle exec rake db:drop
-# bundle exec rake db:create_indexes
-# bundle exec rake db:seed
+# Don't run this! 			bundle exec rake db:drop
+# Don't run this either !!	bundle exec rake db:create_indexes
+# Just this 				bundle exec rake db:seed
 ###########################
 
 
