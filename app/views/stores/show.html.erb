@@ -1,3 +1,11 @@
+  <% content_for :opengraph_tags do %>
+    <meta property="og:title" content="<%= @store.name %>" />
+    <meta property="og:site_name" content="TritonYelp" />
+    <meta property="og:url" content="<%= store_url(@store) %>" />
+    <meta property="og:image" content="<%= root_url.chomp('/') + @store.image.url(:banner) %>" />
+    <meta property="og:description" content="<%= @store.description.truncate 140, :omission => "..." %>" />
+<% end %>
+
   <h2><%= @store.name %></h2>
 	
 	<% if @store.image.exists? %>

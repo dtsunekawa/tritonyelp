@@ -16,6 +16,14 @@
 					<%= (store.display_tags 3).html_safe %>
 				</div>
 			<% end %>
+			<!-- Begin Share Div -->
+				<div class="sharing">
+					<div class="fb-like share_icon" data-href="<%= store_url(store) %>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+					<a href="http://www.reddit.com/submit?url=<%= store_url(store) %>"><img class="share_icon" src="http://www.reddit.com/static/spreddit7.gif" alt="submit to reddit" border="0" /></a>
+					<a id="share_icon" href="http://twitter.com/share" data-url="<%= store_url(store) %>" 
+					<% if !store.description.nil? %>data-text="<%= store.description.truncate(120, :omission => "...") %><% end %>" class="twitter-share-button" data-hashtags="TritonYelp"data-lang="en">Tweet</a>
+				</div>
+			<!-- End Share Div -->
 		</div>
 		<div class="clear"></div>
 		

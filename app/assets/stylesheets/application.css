@@ -172,6 +172,8 @@ border-radius: 10px;
 
 /* Search Page */
 .search_result, .store {
+  width: 100%;
+  position: relative;
   margin-bottom: 20px;
   float:left;
   display:inline;
@@ -195,6 +197,18 @@ input:-moz-placeholder { font-style:italic; }
 .seperator{
   border-bottom: 1px solid #eee;
   margin-bottom: 8px;
+}
+
+/* Sharing */
+.sharing{
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  display:none;
+}
+
+.share_icon, #share_icon {
+  margin-right: 24px !important;
 }
 
 /* Errors and Notices */
