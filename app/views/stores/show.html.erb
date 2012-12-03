@@ -13,39 +13,25 @@
 		<center><%= image_tag @store.image.url(:banner), :class => "banner" %></center>
 		<br />
 	<% end %>
-
-
-
-
-
-
-
-
+	
+<!-- Begin twitter widget display -->
 <% if @store.twitter_widget_id? %>
-<div id="content">
 
-  <div id="left">
-<a class="twitter-timeline" width="350" height="350" href=<%= @store.twitter_user_name %> data-widget-id=<%= @store.twitter_widget_id %>></a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  </div>
+	<div id="left">
+		<a class="twitter-timeline" width="350" height="350" href=<%= @store.twitter_user_name %> data-widget-id=<%= @store.twitter_widget_id %>></a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  	</div>
 
-  <div id="right">
-  	<%= @store.description %> 
-  </div>
+  	<div id="right">
+  		<%= @store.description %> 
+  	</div>
 
-</div>
+	<div class="clear"></div>
 
 <% else %>
 	<%= @store.description %> 
 <% end %>
-
-
-
-
-
-
-
-
+<!-- End twitter widget display -->
 
 	<% if !@store.tags.empty? %>
 		<div class="store_tags">Tags: <%= (@store.display_tags 12).html_safe %></div>

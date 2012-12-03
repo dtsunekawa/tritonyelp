@@ -253,14 +253,6 @@ table#stores th, table#stores td {
 	border-radius: 10px;
 }
 
-
-#content { 
-  overflow:auto;
-  margin: auto; 
-  width: 800px; 
-} 
-
-
 #left, #right { 
   width: 45%; 
   margin:5px; 
