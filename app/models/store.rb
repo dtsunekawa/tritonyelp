@@ -67,7 +67,7 @@ class Store
 
   	def add_tags value
   	    value.split(',').each do |tag|
-  	    	if !(temp = self.tags.find_by(name: /(^#{Regexp.quote(tag.gsub(/\s+/, ""))}$)/i))
+  	    	if !(temp = self.tags.find_or_create_by(name: /(^#{Regexp.quote(tag.gsub(/\s+/, ""))}$)/i))
 				self.tags.build(name: tag.gsub(/\s+/, "")).save
 			else
 				temp.popularity += 1
