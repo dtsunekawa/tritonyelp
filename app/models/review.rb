@@ -18,7 +18,7 @@ class Review
   has_many :uservotes, :dependent => :destroy
 
   def tag_list=value
-    self.tags = nil
+    self.tags.destroy
     value.split(',').each do |tag|
       self.tags.build(:name => tag.gsub(/\s+/, "")).save
     end
