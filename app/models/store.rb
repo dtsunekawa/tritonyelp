@@ -67,9 +67,8 @@ class Store
 
   	def add_tags value
   	    value.split(',').each do |tag|
-  	    	#if !(temp = self.tags.find_or_create_by(name: /(^#{Regexp.quote(tag.gsub(/\s+/, ""))}$)/i))
-  	    	if !(temp = self.tags.find_by(name: /(^#{Regexp.quote(tag.gsub(/\s+/, ""))}$)/i))
-				self.tags.build(name: tag.gsub(/\s+/, "")).save
+  	    	if !(temp = self.tags.find_by(name: /(^#{Regexp.quote(tag)}$)/i))
+				self.tags.build(name: tag).save
 			else
 				temp.popularity += 1
 				temp.save	
@@ -80,7 +79,7 @@ class Store
 
   	def remove_tags value
   		 value.split(',').each do |tag|
-      		if (temp = self.tags.find_by(name: /(^#{Regexp.quote(tag.gsub(/\s+/, ""))}$)/i))
+      		if (temp = self.tags.find_by(name: /(^#{Regexp.quote(tag)}$)/i))
       			if temp.popularity < 1
       				temp.destroy
       			else
@@ -94,7 +93,7 @@ class Store
 
   	# Necessary for search by tags functionality
   	def tag_list
-    	self.tag_list = self.tags.join(',')
+    	self.tag_list = self.tags.join(', ')
   	end  
 
   	# To be called in views with .html_safe

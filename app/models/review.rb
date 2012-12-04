@@ -1,5 +1,6 @@
 class Review
   include Mongoid::Document
+  include Mongoid::Timestamps::Created
 
   has_and_belongs_to_many :tags
   attr_accessor :tag_list
@@ -19,12 +20,12 @@ class Review
   def tag_list=value
     self.tags = nil
     value.split(',').each do |tag|
-      self.tags.build(:name => tag).save
+      self.tags.build(:name => tag.gsub(/\s+/, "")).save
     end
   end
 
   def tag_list
-    self.tags.join(',')
+    self.tags.join(', ')
   end  
 
   # This throws an error when creating a Review
