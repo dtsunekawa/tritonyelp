@@ -67,8 +67,8 @@ class Store
 
   	def add_tags value
   	    value.split(',').each do |tag|
-  	    	if !(temp = self.tags.find_by(name: /(^#{Regexp.quote(tag)}$)/i))
-				self.tags.build(name: tag).save
+  	    	if !(temp = self.tags.find_by(name: /(^#{Regexp.quote(tag.gsub(/\s+/, ""))}$)/i))
+				self.tags.build(name: tag.gsub(/\s+/, "")).save
 			else
 				temp.popularity += 1
 				temp.save	
@@ -79,7 +79,7 @@ class Store
 
   	def remove_tags value
   		 value.split(',').each do |tag|
-      		if (temp = self.tags.find_by(name: /(^#{Regexp.quote(tag)}$)/i))
+      		if (temp = self.tags.find_by(name: /(^#{Regexp.quote(tag).gsub(/\s+/, "")}$)/i))
       			if temp.popularity < 1
       				temp.destroy
       			else
