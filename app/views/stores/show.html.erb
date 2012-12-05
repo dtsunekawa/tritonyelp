@@ -18,7 +18,7 @@
 <% if @store.twitter_widget_id? %>
 
 	 	<div id="right">
- 			<a class="twitter-timeline" width="240" height="100" href=<%= @store.twitter_user_name %> data-widget-id=<%= @store.twitter_widget_id %>></a>
+ 			<a class="twitter-timeline" width="240" height="100" href=<%= "https://twitter.com/" + @store.twitter_user_name %> data-widget-id=<%= @store.twitter_widget_id %>></a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   		</div>
   		<%= @store.description %> 
@@ -35,15 +35,14 @@
 	<% else %>
 		<br />
 	<% end %>
-	<!-- Begin Share Div -->
-
-			<div class="sharing">
-				<div class="fb-like share_icon" data-href="<%= store_url(@store) %>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-action="recommend"></div>
-				<a href="http://www.reddit.com/submit?url=<%= store_url(@store) %>"><img class="share_icon" src="http://www.reddit.com/static/spreddit7.gif" alt="submit to reddit" border="0" /></a>
-				<a id="share_icon" href="http://twitter.com/share" data-url="<%= store_url(@store) %>" 
-				<% if !@store.description.nil? %>data-text="<%= @store.description.truncate(120, :omission => "...") %><% end %>" class="twitter-share-button" data-hashtags="TritonYelp"data-lang="en">Tweet</a>
-			</div>
-	<!-- End Share Div -->
+	<!-- Begin Share Container -->
+			<ul class="sharing">
+				<li id="fb-button"><div class="fb-like share_icon" data-href="<%= store_url(@store) %>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-action="recommend"></div></li>
+				<li id="reddit-button"><a href="http://www.reddit.com/submit?url=<%= store_url(@store) %>"><img class="share_icon" src="http://www.reddit.com/static/spreddit7.gif" alt="submit to reddit" border="0" /></a></li>
+				<li id="tweet-button"><a id="share_icon" href="http://twitter.com/share" data-url="<%= store_url(@store) %>" 
+				<% if !@store.description.nil? %>data-text="<%= @store.description.truncate(120, :omission => "...") %><% end %>" class="twitter-share-button" data-hashtags="TritonYelp"data-lang="en">Tweet</a></li>
+			</ul>
+	<!-- End Share Container -->
 	<br />
 	<br />
 </div>
@@ -89,7 +88,7 @@
 		<br />
 		<br />
 		<b>Customer Feedback</b>
-  		<% @store.reviews.reverse.each do |review| %>
+  		<% @store.reviews.sort{|review1, review2| review2.created_at.to_i <=> review1.created_at.to_i }.each do |review| %>
 			<br />
 
 			<br />

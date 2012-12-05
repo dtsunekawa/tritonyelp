@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
 		@review.user = current_user
 		@review.store = params[:store_id] 
 		@store = Store.find(params[:store_id])
-		@store.add_tags(@review.tag_list)
+		@store.add_tags(@review.tag_list.gsub(/\s+/, ""))
 		# Store tag list for search function
 		@store.tag_list
 
@@ -46,7 +46,7 @@ class ReviewsController < ApplicationController
 		@store = @review.store
 
 		# Logic for adding and removing tags
-		new_tags = params[:review][:tag_list].split(',')
+		new_tags = params[:review][:tag_list].gsub(/\s+/, "").split(',')
 		tags_to_add = []
 		tags_to_remove = []
 		@review.tags.each do |tag|
@@ -56,7 +56,7 @@ class ReviewsController < ApplicationController
 		end
 
 		new_tags.each do |tag_name|
-			if @review.tags.grep(/(^#{Regexp.quote(tag_name.gsub(/\s+/, ""))}$)/i).empty?
+			if @review.tags.grep(/(^#{Regexp.quote(tag_name)}$)/i).empty?
 				tags_to_add << tag_name
 			end
 		end
@@ -90,6 +90,9 @@ class ReviewsController < ApplicationController
 	
 	def destroy
 		review = Review.find(params[:id])
+		@store = review.store
+
+		@store.remove_tags(review.tag_list.gsub(/\s+/, ""))
 		review.destroy
 		
 		respond_to do |format|
