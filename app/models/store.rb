@@ -94,6 +94,7 @@ class Store
   	# Necessary for search by tags functionality
   	def tag_list
     	self.tag_list = self.tags.join(', ')
+    	save
   	end  
 
   	# To be called in views with .html_safe
