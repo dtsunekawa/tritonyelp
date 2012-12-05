@@ -213,10 +213,6 @@ input:-moz-placeholder { font-style:italic; }
   display: inline-block;
 }
 
-.sharing iframe{
-  height: 21px !important;
-}
-
 #fb-button {
   position:relative;
   bottom: .145em;
