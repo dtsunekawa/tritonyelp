@@ -208,6 +208,21 @@ input:-moz-placeholder { font-style:italic; }
   display:none;
 }
 
+.sharing li {
+  list-style: none;
+  display: inline-block;
+}
+
+#fb-button {
+  position:relative;
+  bottom: .145em;
+}
+
+#tweet-button {
+  position: relative;
+  bottom: -.1em;
+}
+
 .store_content{
   position:relative;
 }
