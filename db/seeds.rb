@@ -237,227 +237,163 @@ puts 'Creating reviews...'
 puts 'Creating reviews for Cups Coffee Cart'
 
 cups_review_1 = Review.create! :content => 'One of the hidden gems of UCSD! So much better than other coffee carts - and the sandwiches are just what I need before a tough mission!', 
-:user => jack_b, :store => cups_store 
+:user => jack_b, :store => cups_store, :tag_list => "sandwiches, coffee"
+cups_store.add_tags(cups_review_1.tag_list)
+cups_store.tag_list
 
 cups_review_2 = Review.create! :content => 'They have different foods for breakfast and lunch, I personally love the breakfast burritos and Bronx Pizza on Thursdays.', 
-:user => josh_g, :store => cups_store 
+:user => josh_g, :store => cups_store, :tag_list => "breakfast, lunch, burritos, pizza" 
+cups_store.add_tags(cups_review_2.tag_list)
+cups_store.tag_list
 
 cups_review_3 = Review.create! :content => 'Perfect for the on the go CS student like me! Very generous with the cream cheese on bagels too!!', 
-:user => matt_n, :store => cups_store 
+:user => matt_n, :store => cups_store, :tag_list => "bagels" 
+cups_store.add_tags(cups_review_3.tag_list)
+cups_store.tag_list
 
 cups_review_4 = Review.create! :content => 'Excellent coffee drinks - Granite Bear Special OP! Beefeater and Muffaleta sandwiches are awesome too.', 
-:user => nico_p, :store => cups_store 
+:user => nico_p, :store => cups_store, :tag_list => "sandwiches, coffee, drinks" 
+cups_store.add_tags(cups_review_4.tag_list)
+cups_store.tag_list
 
-cups_store.reviews << cups_review_1 << cups_review_2 << cups_review_3 << cups_review_4 
+
 
 puts 'Creating reviews for Goodys...'
 
 goodys_review_1 = Review.create! :content => 'Excellent burritos for a decent price. Just what I need before a tough mission!', 
-:user => jack_b, :store => goodys_store 
+:user => jack_b, :store => goodys_store, :tag_list => "burritos"
+goodys_store.add_tags(goodys_review_1.tag_list)
+goodys_store.tag_list
 
 goodys_review_2 = Review.create! :content => 'Decent sandwich but not worth the price! There\'s a water bottle filling station inside as well.', 
-:user => john_s, :store => goodys_store 
+:user => john_s, :store => goodys_store, :tag_list => "sandwich, expensive, water"
+goodys_store.add_tags(goodys_review_2.tag_list)
+goodys_store.tag_list
 
 goodys_review_3 = Review.create! :content => 'The bowls are pretty good if your\'e looking for something low in carbs, about the average price of any thing decent on campus.', 
-:user => dan_t, :store => goodys_store 
+:user => dan_t, :store => goodys_store, :tag_list => "healthy"
+goodys_store.add_tags(goodys_review_3.tag_list)
+goodys_store.tag_list
 
-goodys_review_4 = Review.create! :content => 'One of the only foods I can eat on campus without needing a bathroom within 10 meters so definiately worth 6 bucks.', 
-:user => nico_p, :store => goodys_store 
+goodys_review_4 = Review.create! :content => 'I can\'t eat anything from here without needing a bathroom within 10 meters so definiately not worth 6 bucks.', 
+:user => nico_p, :store => goodys_store, :tag_list => "IBS, expensive"
+goodys_store.add_tags(goodys_review_4.tag_list)
+goodys_store.tag_list
 
-goodys_store.reviews << goodys_review_1 << goodys_review_2 << goodys_review_3 << goodys_review_4 \
+
 
 puts 'Creating reviews for Panda Express...'
 
 panda_review_1 = Review.create! :content => 'Orange chicken is hit or miss, make sure its fresh or you\'ll be in bathroom all day', 
-:user => john_s, :store => panda_store 
+:user => john_s, :store => panda_store, :tag_list => "chicken, IBS" 
+panda_store.add_tags(panda_review_1.tag_list)
+panda_store.tag_list
 
 panda_review_2 = Review.create! :content => 'Excellent authentic asian food, you can definately tell how fresh everything is. Orange chicken is soooo goooood!', 
-:user => josh_g, :store => panda_store 
+:user => josh_g, :store => panda_store, :tag_list => "Asian, healthy, chicken" 
+panda_store.add_tags(panda_review_2.tag_list)
+panda_store.tag_list
 
 panda_review_3 = Review.create! :content => 'The chow mein was dry and old, definiately not coming back here ever again.', 
-:user => matt_n, :store => panda_store 
+:user => matt_n, :store => panda_store, :tag_list => "gross, unhealthy" 
+panda_store.add_tags(panda_review_3.tag_list)
+panda_store.tag_list
 
 panda_review_4 = Review.create! :content => 'Just ate bad orange chicken - was in the bathroom all day. Beware!!!!!!', 
-:user => nico_p, :store => panda_store 
+:user => nico_p, :store => panda_store, :tag_list => "chicken, IBS" 
+panda_store.add_tags(panda_review_4.tag_list)
+panda_store.tag_list
 
-panda_store.reviews << panda_review_1 << panda_review_2 << panda_review_3 << panda_review_4 
 
 puts 'Creating reviews for Burger King...'
 
 bk_review_1 = Review.create! :content => 'A classic American establishment - you can always depend on the whopper! BK Big Fish is just as good as it always was!', 
-:user => jack_b, :store => bk_store 
+:user => jack_b, :store => bk_store, :tag_list => "American, burger, fish, sandwich, quality"
+bk_store.add_tags(bk_review_1.tag_list)
+bk_store.tag_list
 
 bk_review_2 = Review.create! :content => 'Microwaved burgers, cold french fries, and a melted shake! Waste of 8 dollars!', 
-:user => tuan_b, :store => bk_store 
+:user => tuan_b, :store => bk_store, :tag_list => "gross, burgers, fries, shake, expensive"
+bk_store.add_tags(bk_review_2.tag_list)
+bk_store.tag_list
 
 bk_review_3 = Review.create! :content => 'Best dollar menu on campus, I always get chicken tenders, fries, and a drink - great deal if you don\'t want to spend 10 bucks at Goodys', 
-:user => cam_j, :store => bk_store
+:user => cam_j, :store => bk_store, :tag_list => "inexpensive, chicken, fries, drink"
+bk_store.add_tags(bk_review_3.tag_list)
+bk_store.tag_list
 
 bk_review_4 = Review.create! :content => 'Great for a professor on the go - speaking of great, this is by far the most robust, extensible, maintainable, testable and verifiable, modular applications I have EVER laid eyes upon. A+ jobs guys, A+ job.', 
-:user => nico_p, :store => bk_store 
+:user => ingolf_k, :store => bk_store, :tag_list => "amazing, ruby, on, rails, application, A+"
+bk_store.add_tags(bk_review_4.tag_list)
+bk_store.tag_list
 
-bk_store.reviews << bk_review_1 << bk_review_2 << bk_review_3 << bk_review_4 
 
 puts 'Creating reviews for Subway...'
 
 subway_review_1 = Review.create! :content => 'Stingy with the meat and cheese, they actually took a cheese OFF when they noticed there was one too many - RIDICULOUS!', 
-:user => dan_t, :store => subway_store 
+:user => dan_t, :store => subway_store, :tag_list => "stingy, sandwich"
+subway_store.add_tags(subway_review_1.tag_list)
+subway_store.tag_list
 
 subway_review_2 = Review.create! :content => 'Good enough when your\'e on campus, not too expensive and same Subway \'quality\'', 
-:user => josh_g, :store => subway_store 
+:user => josh_g, :store => subway_store, :tag_list => "sandwich, inexpensive, average"
+subway_store.add_tags(subway_review_2.tag_list)
+subway_store.tag_list
 
 subway_review_3 = Review.create! :content => 'Wilted veggies and cheap meat and manufactured cheese!!!! No thanks.', 
-:user => john_s, :store => subway_store 
+:user => john_s, :store => subway_store, :tag_list => "gross, sandwich"
+subway_store.add_tags(subway_review_3.tag_list)
+subway_store.tag_list 
 
 subway_review_4 = Review.create! :content => 'I\'d much rather, go to Cups or Goodys and spend a few more bucks than eat Subway and be hunugry in 30 minutes....',
-:user => nico_p, :store => subway_store 
+:user => nico_p, :store => subway_store, :tag_list => "stingy, sandwich"
+subway_store.add_tags(subway_review_4.tag_list)
+subway_store.tag_list
 
-subway_store.reviews << subway_review_1 << subway_review_2 << subway_review_3 << subway_review_4
 
 puts 'Creating reviews for Bombay Coast...'
 
 bombay_review_1 = Review.create! :content => 'Uuuhhh....If you\'ve ever had Indian food then you know this is not it', 
-:user => tuan_b, :store => bombay_store 
+:user => tuan_b, :store => bombay_store, :tag_list => "Indian, gross"
+bombay_store.add_tags(bombay_review_1.tag_list)
+bombay_store.tag_list
 
 bombay_review_2 = Review.create! :content => 'The panner masala tiki daal naan is really good, and pretty cheap compared to other places!', 
-:user => josh_g, :store => bombay_store 
+:user => josh_g, :store => bombay_store, :tag_list => "Indian, amazing, inexpensive"
+bombay_store.add_tags(bombay_review_2.tag_list)
+bombay_store.tag_list
 
 bombay_review_3 = Review.create! :content => 'Everything tastes the same, not worth the money...I doubt the authenticity of this locale!!!!	', 
-:user => cam_j, :store => bombay_store
+:user => cam_j, :store => bombay_store, :tag_list => "gross, expensive"
+bombay_store.add_tags(bombay_review_3.tag_list)
+bombay_store.tag_list
 
 bombay_review_4 = Review.create! :content => 'The paneer masala and dal aren\'t too bad, but Punjabi Tandoor puts this place to shame.',
-:user => matt_n, :store => bombay_store 
+:user => matt_n, :store => bombay_store, :tag_list => "Indian, average"
+bombay_store.add_tags(bombay_review_4.tag_list)
+bombay_store.tag_list
 
-bombay_store.reviews << bombay_review_1 << bombay_review_2 << bombay_review_3 << bombay_review_4 
 
 puts 'Creating reviews for Sunshine Market...'
 
 sunshine_review_1 = Review.create! :content => 'Decent assortment of groceries, drinks, snacks, etc. Really good soup, really keeps me warm on a mission.', 
-:user => jack_b, :store => sunshine_store 
+:user => jack_b, :store => sunshine_store, :tag_list => "groceries, drinks, snacks, soup, variety"
+sunshine_store.add_tags(sunshine_review_1.tag_list)
+sunshine_store.tag_list
 
 sunshine_review_2 = Review.create! :content => 'I never buy anything from here as its too expensive, but I fill up my water bottle with cold water from the soda fountain, \
 get hot water for tea from the hot water dispenser, and get plasticware and napkins almost daily. So... yeah great store.', 
-:user => nico_p, :store => sunshine_store 
+:user => nico_p, :store => sunshine_store, :tag_list => "expensive, free"
+sunshine_store.add_tags(sunshine_review_2.tag_list)
+sunshine_store.tag_list
 
 sunshine_review_3 = Review.create! :content => 'Somethings are absurdly expensive others regularly priced. Snicker bars for example are like 75 cents. But a bag of chips like 5 bukcs.', 
-:user => john_s, :store => sunshine_store
+:user => john_s, :store => sunshine_store, :tag_list => "expensive, inexpensive, candy, snacks"
+sunshine_store.add_tags(sunshine_review_3.tag_list)
+sunshine_store.tag_list
 
 sunshine_review_4 = Review.create! :content => 'One of the few markets so the prices are ridiculous, but the line moves fast and they have a decent selection.',
-:user => matt_n, :store => sunshine_store 
-
-sunshine_store.reviews << sunshine_review_1 << sunshine_review_2 << sunshine_review_3 << sunshine_review_4 
-
-
-puts 'Creating tags...'
-
-sandwich = Tag.create! :name => 'sandwich', 
-:reviews => [cups_review_1, cups_review_4, goodys_review_2, subway_review_1, subway_review_2],
-:stores => [cups_store, subway_store, goodys_store]
-
-breakfast = Tag.create! :name => 'breakfast', 
-:reviews => [cups_review_2],
-:stores => [cups_store]
-
-lunch = Tag.create! :name => 'lunch', 
-:reviews => [cups_review_2], 
-:stores => [cups_store]
-
-pizza = Tag.create! :name => 'pizza', 
-:reviews => [cups_review_2], 
-:stores => [cups_store]
-
-burrito = Tag.create! :name => 'burrito', 
-:reviews => [cups_review_2, goodys_review_1], 
-:stores => [cups_store, goodys_store]
-
-bagel = Tag.create! :name => 'bagel', 
-:reviews => [cups_review_3], 
-:stores => [cups_store]
-
-coffee = Tag.create! :name => 'coffee', 
-:reviews => [cups_review_4], 
-:stores => [cups_store]
-
-healthy = Tag.create! :name => 'healthy', 
-:reviews => [goodys_review_2, goodys_review_3, goodys_review_4],
-:stores => [goodys_store]
-
-expensive = Tag.create! :name => 'expensive', 
-:reviews => [goodys_review_3, bk_review_3, sunshine_review_3, sunshine_review_4],
-:stores => [goodys_store, bk_store, sunshine_store]
-
-water_refill = Tag.create! :name => 'water-refill', 
-:reviews => [goodys_review_4],
-:stores => [goodys_store]
-
-chicken = Tag.create! :name => 'chicken', 
-:reviews => [panda_review_1, panda_review_2, bk_review_3], 
-:stores => [panda_store, bk_store]
-
-asian = Tag.create! :name => 'asian', 
-:reviews => [panda_review_2], 
-:stores => [panda_store]
-
-gross =  Tag.create! :name => 'gross', 
-:reviews => [panda_review_3, panda_review_4, bk_review_2, subway_review_3, bombay_review_2, bombay_review_3],
-:stores => [panda_store, bk_store, subway_store, bombay_store]
-
-ibs = Tag.create! :name => 'straight-to-the-bathroom', 
-:reviews => [panda_review_4], 
-:stores => [panda_store]
-
-burger = Tag.create! :name => 'burger', 
-:reviews => [bk_review_1], 
-:stores => [bk_store]
-
-american = Tag.create! :name => 'american', 
-:reviews => [bk_review_1], 
-:stores => [bk_store]
-
-inexpensive = Tag.create! :name => 'inexpensive', 
-:reviews => [bk_review_3, subway_review_2, sunshine_review_3], 
-:stores => [bk_store, subway_store, sunshine_store]
-
-fries = Tag.create! :name => 'fries', 
-:reviews => [bk_review_3], 
-:stores => [bk_store]
-
-awesome = Tag.create! :name => 'awesome', 
-:reviews => [bk_review_4], 
-:stores => [bk_store]
-
-stingy = Tag.create! :name => 'stingy', 
-:reviews => [subway_review_1, subway_review_4],
-:stores => [subway_store]
-
-indian = Tag.create! :name => 'indian', 
-:reviews => [bombay_review_1, bombay_review_2, bombay_review_4], 
-:stores => [bombay_store]
-
-drinks = Tag.create! :name => 'drinks', 
-:reviews => [sunshine_review_1],
-:stores => [sunshine_store]
-
-groceries = Tag.create! :name => 'groceries', 
-:reviews => [sunshine_review_1], 
-:stores => [sunshine_store]
-
-soup = Tag.create! :name => 'soup', 
-:reviews => [sunshine_review_1], 
-:stores => [sunshine_store]
-
-snacks = Tag.create! :name => 'snacks', 
-:reviews => [sunshine_review_1],
-:stores => [sunshine_store]
-
-free = Tag.create! :name => 'free', 
-:reviews => [sunshine_review_2], 
-:stores => [sunshine_store]
-
-convenient = Tag.create! :name => 'convenient', 
-:reviews => [sunshine_review_4], 
-:stores => [sunshine_store]
-
-
-
+:user => matt_n, :store => sunshine_store, :tag_list => "expensive, convenient, variety"
+sunshine_store.add_tags(sunshine_review_4.tag_list)
+sunshine_store.tag_list
 
