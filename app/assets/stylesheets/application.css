@@ -133,14 +133,16 @@ li.rating_star.on {
 } 
 
 /* Price Range Tooltip */
-a.price_range {   
-  border-bottom: 1px solid;
+a.price_range {  
+  color: #FCC919; 
   outline: none;
-  cursor: help; text-decoration: none;
+  cursor: help; 
+  text-decoration: none;
   position: relative;
 } 
 
 a.price_range span {
+  color: black;  
   margin-left: -999em;
   position: absolute;
 }
