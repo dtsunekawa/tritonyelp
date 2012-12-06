@@ -104,13 +104,37 @@
 				p = review.price
 				if (p == 4)
 			%>
-  				Price range: <font color = #FCC919>$$$$</font>
+  				Price range: <a href="#" class="price_range">$$$$
+  				<span class="price_expl">Approximate cost.<br/><br/>
+  					$ = College Budget: under $3.<br/>
+  					$$ = Usual Price: under $4 - $8.<br/>
+  					$$$ = Expensive: $9 - $13.<br/>
+  					$$$$ = Livin' Large: above $14.
+  				</span></a>
   			<%	elsif (p == 3) %>
-  				Price range: <font color = #FCC919>$$$</font>
+  				Price range: <a href="#" class="price_range">$$$
+  				<span class="price_expl">Approximate cost.<br/><br/>
+  					$ = College Budget: under $3.<br/>
+  					$$ = Usual Price: under $4 - $8.<br/>
+  					$$$ = Expensive: $9 - $13.<br/>
+  					$$$$ = Livin' Large: above $14.
+  				</span></a>
   			<%	elsif (p == 2) %>
-  				Price range: <font color = #FCC919>$$</font>
+  				Price range: <a href="#" class="price_range">$$
+  				<span class="price_expl">Approximate cost.<br/><br/>
+  					$ = College Budget: under $3.<br/>
+  					$$ = Usual Price: under $4 - $8.<br/>
+  					$$$ = Expensive: $9 - $13.<br/>
+  					$$$$ = Livin' Large: above $14.
+  				</span></a>
   			<%	else %>
-  				Price range: <font color = #FCC919>$</font>
+  				Price range: <a href="#" class="price_range">$
+  				<span class="price_expl">Approximate cost.<br/><br/>
+  					$ = College Budget: under $3.<br/>
+  					$$ = Usual Price: under $4 - $8.<br/>
+  					$$$ = Expensive: $9 - $13.<br/>
+  					$$$$ = Livin' Large: above $14.
+  				</span></a>
   			<% end %>	
   			<br />
   			<% up_count = review.uservotes.upcount(review.id) %>
