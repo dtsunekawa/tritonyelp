@@ -32,9 +32,8 @@
 
 	<% if !@store.tags.empty? %>
 		<div class="store_tags">Tags: <%= (@store.display_tags 12).html_safe %></div>
-	<% else %>
-		<br />
 	<% end %>
+	<br />
 	<!-- Begin Share Container -->
 			<ul class="sharing">
 				<li id="fb-button"><div class="fb-like share_icon" data-href="<%= store_url(@store) %>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-action="recommend"></div></li>
