@@ -67,6 +67,8 @@ a {
   text-decoration: none;
 }
 
+
+
 a:hover {
   color: #069;
   text-decoration: none;
@@ -129,6 +131,68 @@ li.rating_star.on {
   height: 25px;
   background: url(/images/star.png) 0 -25px;
 } 
+
+/* Price Range Tooltip */
+a.price_range {   
+  border-bottom: 1px solid;
+  outline: none;
+  cursor: help; text-decoration: none;
+  position: relative;
+} 
+
+a.price_range span {
+  margin-left: -999em;
+  position: absolute;
+}
+
+a.price_range:hover span {
+  font-family: Calibri, Tahoma, Geneva, sans-serif;
+  position: absolute;
+  left: 1em;
+  top: 2em;
+  z-index: 99;
+  margin-left: 0;
+  width: 250px;
+  border-radius: 5px 5px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+-webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+-moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+-moz-animation:bounce .25s linear;  
+  -webkit-animation:bounce .25s linear; 
+}
+
+@-moz-keyframes bounce {
+  0%{ -moz-transform:scale(0,0); opacity:0;}
+  50%{ -moz-transform:scale(1.2,1.2); opacity:0.3; }
+  75%{ -moz-transform:scale(0.9,0.9); opacity:0.7;}
+  100%{ -moz-transform:scale(1,1); opacity:1;}
+}
+
+@-webkit-keyframes mymove {
+  0%{ -webkit-transform:scale(0,0); opacity:0;}
+  50%{ -webkit-transform:scale(1.2,1.2); opacity:0.3;}
+  75%{ -webkit-transform:scale(0.9,0.9); opacity:0.7;}
+  100%{ -webkit-transform:scale(1,1); opacity:1;}
+}
+
+a.price_range:hover img {
+  border: 0;
+  margin: -10px 0 0 -55px;
+  float: left;
+  position: absolute;
+}
+
+a.price_range:hover em {
+  font-family: Candara, Tahoma, Geneva, sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: block;
+  padding: 0.2em 0 0.6em 0;
+}
+span.price_expl { padding: 0.8em 1em; 
+background: #FFFFAA; border: 1px solid #FFAD33;}
 
 /* Footer */
 
